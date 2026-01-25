@@ -13,6 +13,10 @@ const Home: React.FC = () => {
             src={getAssetUrl(MASONRY_ASSETS.hero.main)} 
             alt="Brick wall craftsmanship" 
             className="w-full h-full object-cover brightness-[0.35]"
+            onError={(e) => {
+              // Safety fallback if local image fails
+              (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&q=80&w=2000';
+            }}
           />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-white w-full">
@@ -54,11 +58,14 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
              {MASONRY_ASSETS.projects.slice(0, 4).map((project) => (
-               <div key={project.id} className="group relative overflow-hidden h-[300px] md:h-96 cursor-pointer">
+               <div key={project.id} className="group relative overflow-hidden h-[300px] md:h-96 cursor-pointer bg-gray-200">
                  <img 
                    src={getAssetUrl(project.path)} 
                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                    alt={project.title}
+                   onError={(e) => {
+                     (e.target as HTMLImageElement).src = project.fallback;
+                   }}
                  />
                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span className="text-white oswald font-bold text-lg border-2 border-white px-6 py-2 uppercase tracking-widest">VIEW PROJECT</span>
