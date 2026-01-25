@@ -14,7 +14,7 @@ export const MASONRY_ASSETS = {
     logo: '/images/logo.png', // Placeholder for your future logo
   },
   hero: {
-    main: 'hero-home - Copy.png',
+    main: 'trade-demo-images/hero-home - Copy.png',
     about: 'https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1000',
   },
   services: {
