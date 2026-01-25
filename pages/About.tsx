@@ -1,16 +1,17 @@
 
 import React from 'react';
+import { MASONRY_ASSETS, getAssetUrl } from '../constants/images';
 
 const About: React.FC = () => {
   return (
     <div className="bg-white">
       <div className="relative h-64 bg-gray-900 flex items-center justify-center">
         <img 
-          src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1000" 
+          src={getAssetUrl(MASONRY_ASSETS.hero.about)} 
           className="absolute inset-0 w-full h-full object-cover opacity-40" 
           alt="Masonry tools" 
         />
-        <h1 className="relative text-5xl font-bold oswald text-white uppercase tracking-widest">About Me</h1>
+        <h1 className="relative text-5xl font-bold oswald text-white uppercase tracking-widest">My Story</h1>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -55,7 +56,7 @@ const About: React.FC = () => {
 
           <div className="space-y-6">
             <img 
-              src="https://images.unsplash.com/photo-1621905231727-44023c382617?auto=format&fit=crop&q=80&w=800" 
+              src={getAssetUrl(MASONRY_ASSETS.misc.worker)} 
               className="w-full rounded-lg shadow-2xl" 
               alt="Professional bricklayer working" 
             />

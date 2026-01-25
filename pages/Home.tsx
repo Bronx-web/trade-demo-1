@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { MASONRY_ASSETS, getAssetUrl } from '../constants/images';
 
 const Home: React.FC = () => {
   return (
@@ -9,7 +10,7 @@ const Home: React.FC = () => {
       <section className="relative h-[85vh] md:h-[80vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&q=80&w=2000" 
+            src={getAssetUrl(MASONRY_ASSETS.hero.main)} 
             alt="Brick wall craftsmanship" 
             className="w-full h-full object-cover brightness-[0.35]"
           />
@@ -52,12 +53,12 @@ const Home: React.FC = () => {
       <section className="py-12 md:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-             {[1, 2, 3, 4].map((i) => (
-               <div key={i} className="group relative overflow-hidden h-[300px] md:h-96 cursor-pointer">
+             {MASONRY_ASSETS.projects.slice(0, 4).map((project) => (
+               <div key={project.id} className="group relative overflow-hidden h-[300px] md:h-96 cursor-pointer">
                  <img 
-                   src={`https://picsum.photos/seed/brick${i+10}/800/1000`} 
+                   src={getAssetUrl(project.path)} 
                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                   alt="Masonry Project"
+                   alt={project.title}
                  />
                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span className="text-white oswald font-bold text-lg border-2 border-white px-6 py-2 uppercase tracking-widest">VIEW PROJECT</span>

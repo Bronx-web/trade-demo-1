@@ -1,3 +1,4 @@
+
 # Project Memory: Hart Stone Ltd System
 
 ## 🎯 Project Goal
@@ -9,6 +10,13 @@ A professional, premium-tier booking and quoting ecosystem designed specifically
 - **Professionalism:** Replace informal "text-for-a-quote" workflows with a structured system that makes the tradesman look like a top-tier firm.
 - **Booking Layout Order:** The Booking page layout must always follow this order: Project Details > Estimation Summary > Calendly Form.
 - **Field Requirements:** 'Project Details' must include a 'Special Instructions' field for site-specific details (access codes, pets, etc.).
+
+## 🖼️ Asset Management & Local Testing
+Images are centralized in `constants/images.ts`. To update visuals:
+1. **File Prep:** Prepare your image files (JPG/PNG). Recommended size for heroes is 1920px width, projects 800px width.
+2. **Drop Zone:** Place your images in the `/public/images/` folder of your project root.
+3. **Plug-in:** Update the path in `constants/images.ts` (e.g., change the URL string to `'/images/my-new-hero.jpg'`).
+*Fallback Logic:* If a string is empty or missing, components will use `getAssetUrl()` to display a professional placeholder.
 
 ## 🌏 Regional Rules (AU/NZ)
 - **Linguistics:** Use AU/NZ English (e.g., "Labour" not "Labor", "Organise" not "Organize", "Colour" not "Color").
@@ -22,8 +30,7 @@ A professional, premium-tier booking and quoting ecosystem designed specifically
 - **Coding Style:**
     - Keep it simple: Avoid deeply nested abstractions or "clever" one-liners that are hard to debug.
     - Favor readability: Use descriptive variable names and clear component structures.
-    - Explain "Why": When introducing new React concepts (like `useEffect` or complex state), provide a brief, clear explanation of what is happening.
-- **UI/UX:** Maintain the "Brick Red" (#CB4154) and "Oswald" font branding throughout. Ensure every interaction feels "Premium."
+- **UI/UX:** Maintain the "Brick Red" (#CB4154) and "Oswald" font branding throughout.
 
 ## 🛠️ Tech Stack Reference
 - **Frontend:** React (v19)

@@ -1,10 +1,16 @@
 
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 
-const Footer: React.FC = () => {
+/**
+ * Footer Component
+ * 
+ * Uses forwardRef so the IntersectionObserver in NextStepBar can track 
+ * when the user reaches the bottom of the page.
+ */
+const Footer = forwardRef<HTMLElement>((props, ref) => {
   return (
-    <footer className="bg-gray-900 text-white pt-16 pb-8">
+    <footer ref={ref} className="bg-gray-900 text-white pt-16 pb-24 md:pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
@@ -37,6 +43,8 @@ const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
+});
+
+Footer.displayName = 'Footer';
 
 export default Footer;
