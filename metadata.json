@@ -1,0 +1,7 @@
+{
+  "name": "Hart Stone Ltd - Premium Masonry",
+  "description": "A professional booking and quoting system for high-end brick and block masonry services, featuring a real-time quote calculator and project showcase.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
