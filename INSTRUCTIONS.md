@@ -11,12 +11,18 @@ A professional, premium-tier booking and quoting ecosystem designed specifically
 - **Booking Layout Order:** The Booking page layout must always follow this order: Project Details > Estimation Summary > Calendly Form.
 - **Field Requirements:** 'Project Details' must include a 'Special Instructions' field for site-specific details (access codes, pets, etc.).
 
-## 🖼️ Asset Management & Local Testing
-Images are centralized in `constants/images.ts`. To update visuals:
-1. **File Prep:** Prepare your image files (JPG/PNG). Recommended size for heroes is 1920px width, projects 800px width.
-2. **Drop Zone:** Place your images in the `/public/images/` folder of your project root.
-3. **Plug-in:** Update the path in `constants/images.ts` (e.g., change the URL string to `'/images/my-new-hero.jpg'`).
-*Fallback Logic:* If a string is empty or missing, components will use `getAssetUrl()` to display a professional placeholder.
+## 🖼️ Asset Management & Troubleshooting
+Images are centralized in `constants/images.ts`. If your pictures aren't showing, follow these steps:
+
+1. **Folder Structure:** Ensure you have a folder named `public` at the very root of your project. Inside `public`, create a folder named `images`.
+2. **Naming Convention:** 
+   - DO NOT use spaces (e.g., use `hero-main.jpg` instead of `hero main.jpg`).
+   - Use lowercase for extensions (e.g., `.jpg` instead of `.JPG`).
+   - Be exact: `Project-1.jpg` is NOT the same as `project-1.jpg`.
+3. **The Path:** In `constants/images.ts`, local paths MUST start with a slash and the folder name: `'/images/your-photo.jpg'`.
+4. **Local Testing:**
+   - Drop images into: `/public/images/`
+   - Reference them as: `'/images/filename.jpg'` in the code.
 
 ## 🌏 Regional Rules (AU/NZ)
 - **Linguistics:** Use AU/NZ English (e.g., "Labour" not "Labor", "Organise" not "Organize", "Colour" not "Color").
@@ -28,12 +34,11 @@ Images are centralized in `constants/images.ts`. To update visuals:
 ## 💻 Developer Note & Preferences
 - **Experience Level:** Comfortable with HTML, CSS, and basic JavaScript. Currently learning React.
 - **Coding Style:**
-    - Keep it simple: Avoid deeply nested abstractions or "clever" one-liners that are hard to debug.
-    - Favor readability: Use descriptive variable names and clear component structures.
-- **UI/UX:** Maintain the "Brick Red" (#CB4154) and "Oswald" font branding throughout.
+    - Keep it simple: Avoid deeply nested abstractions.
+    - Favor readability: Use descriptive variable names.
+- **UI/UX:** Maintain the "Brick Red" (#CB4154) and "Oswald" font branding.
 
 ## 🛠️ Tech Stack Reference
 - **Frontend:** React (v19)
-- **Styling:** Tailwind CSS (Mobile-first responsive approach)
-- **Icons:** SVG-based (Lucide-style or custom)
+- **Styling:** Tailwind CSS
 - **Routing:** React Router (HashRouter)
