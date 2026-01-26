@@ -2,30 +2,23 @@
 # Project Memory: Hart Stone Ltd System
 
 ## 🎯 Project Goal
-A professional, premium-tier booking and quoting ecosystem designed specifically for NZ/AU tradesmen. The primary objective is to capture high-quality leads and showcase precision masonry work while maintaining a "high-end" brand image.
+Professional, high-end masonry booking system for NZ/AU.
 
-## 🛡️ Core Function & Strategy
-- **Filter "Tire Kickers":** Use a detailed quote calculator to set price expectations early.
-- **Build Trust:** Display compliance with building standards (like NZS 3604).
-- **Professionalism:** High-end aesthetic with the "Brick Red" (#CB4154) branding.
+## 🛡️ Core Branding
+- **Color:** Brick Red (#CB4154)
+- **Typography:** Oswald (Heads) / Inter (Body)
+- **Tone:** Professional, time-served, premium.
 
-## 🖼️ Asset Management & Troubleshooting (READ THIS FIRST)
-Images are managed via `constants/images.ts`. If they are not appearing:
+## 🖼️ Image Handling (FIXED)
+If images are missing in the preview:
 
-1. **THE WRONG FOLDER:** Many developers accidentally put images in `src/images/`. This will NOT work with the current setup.
-   - ✅ **CORRECT:** `/public/images/` (at the root level of your project).
-   - ❌ **INCORRECT:** `/src/images/`
-2. **THE SPACE TRAP:** Ensure there are no spaces in your filenames or at the end of the strings in `constants/images.ts`.
-   - ✅ **CORRECT:** `'hero.jpg'`
-   - ❌ **INCORRECT:** `'hero.jpg '` (Space at end) or `'hero main.jpg'` (Space in middle).
-3. **CASE SENSITIVITY:** `Project-1.jpg` is NOT the same as `project-1.jpg`. Linux servers (where most sites are hosted) are case-sensitive.
+1. **RELATIVE PATHS:** Use `images/photo.jpg` (No leading slash).
+2. **FOLDER:** Your `images` folder must be next to `index.html`.
+3. **CASE SENSITIVITY:** Filenames are case-sensitive. Check if your file is `my-work-2.JPG` vs `my-work-2.jpg`.
+4. **DASHES VS SPACES:** Ensure your folder has `my-work-2.jpg` (with dashes) if that is what is in the code.
+5. **getAssetUrl:** Always wrap image paths in `getAssetUrl(path)`.
 
-## 🌏 Regional Rules (AU/NZ)
-- **Linguistics:** Use AU/NZ English (e.g., "Labour" not "Labor").
-- **Units:** Metric system only (mm, m, m², m³).
-- **Currency:** NZD/AUD.
-
-## 💻 Tech Stack Reference
-- **Frontend:** React (v19)
-- **Styling:** Tailwind CSS
-- **Routing:** React Router (HashRouter)
+## 🌏 Regional Settings
+- **Region:** NZ / AU
+- **Currency:** NZD ($)
+- **Spelling:** Labour, Colour, Organise.

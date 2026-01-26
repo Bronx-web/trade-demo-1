@@ -19,8 +19,8 @@ const NextStepBar: React.FC<NextStepBarProps> = ({ footerRef }) => {
 
   // Define the flow configuration
   const flow: Record<string, { label: string; path: string }> = {
-    '/': { label: 'Next: Our Story', path: '/about' },
-    '/about': { label: 'Next: View Work', path: '/projects' },
+    '/': { label: 'Next: My Story', path: '/about' },
+    '/about': { label: 'Next: View Projects', path: '/projects' },
     '/projects': { label: 'Next: Get a Quote', path: '/booking' },
   };
 

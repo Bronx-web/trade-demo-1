@@ -20,9 +20,9 @@ const About: React.FC = () => {
             <div>
               <h2 className="text-3xl font-bold oswald mb-4">With a Wealth of Experience...</h2>
               <p className="text-gray-600 leading-relaxed text-lg">
-                Operating with successful business models, I bring proven crafting strategies for longevity. 
+                Operating with successful business partners for 25 years, I bring proven crafting strategies for longevity. 
                 With a love for the arts, I have the eye for detail. A proficiency in new builds with heavy deadlines 
-                to small builds with high detail—I have the perfect balance of design & ingenuity.
+                to small builds with high detail. I have the perfect balance of design & ingenuity.
               </p>
             </div>
             
@@ -61,7 +61,7 @@ const About: React.FC = () => {
               alt="Professional bricklayer working" 
             />
             <div className="p-6 bg-gray-50 border border-gray-100 rounded-lg text-center italic text-gray-500">
-              "Your brickwork won't just look perfect on day one—it will still be perfect (and fully compliant) for many years to come."
+              "Your brickwork won't just look perfect on day one. It's built to be fully compliant) for many years to come."
             </div>
           </div>
         </div>

@@ -178,6 +178,10 @@ const Booking: React.FC = () => {
                  <span className="text-[#CB4154] font-bold mt-0.5">*</span>
                  <p>All work carries a 10-year craftsmanship guarantee and is compliant with NZS 3604.</p>
               </div>
+              <div className="flex items-start gap-2 text-xs text-gray-400 italic leading-tight">
+                 <span className="text-[#CB4154] font-bold mt-0.5">*</span>
+                 <p>Happy with quote book a call to finalise details.</p>
+              </div>
             </div>
           </div>
 
@@ -186,7 +190,7 @@ const Booking: React.FC = () => {
             <h2 className="text-xl md:text-2xl font-bold oswald mb-6 uppercase">Book a Site Visit</h2>
             <div className="w-full overflow-hidden" style={{ minHeight: '700px' }}>
               <iframe
-                src="https://calendly.com/YOUR_LINK"
+                src="https://calendly.com/bronxweb/bronxweb-discovery-call"
                 width="100%"
                 height="700px"
                 frameBorder="0"

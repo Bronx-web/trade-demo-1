@@ -15,7 +15,7 @@ const Home: React.FC = () => {
             className="w-full h-full object-cover brightness-[0.35]"
             onError={(e) => {
               // Safety fallback if local image fails
-              (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&q=80&w=2000';
+              (e.target as HTMLImageElement).src = 'https://images.pexels.com/photos/11236546/pexels-photo-11236546.jpeg';
             }}
           />
         </div>
@@ -44,7 +44,7 @@ const Home: React.FC = () => {
           <h2 className="text-3xl md:text-4xl font-bold oswald mb-6 text-gray-900 uppercase">Master Craftsmanship</h2>
           <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-10">
             A time-served craftsman with a serious obsession for clean lines, perfect bonds, and details that make architects jealous. 
-            Whether you need a bulletproof structural build, a show-stopping outdoor fireplace, or a heritage repoint—I've got the hands and the eye to make it happen.
+            Whether you need a bulletproof structural build, a show-stopping outdoor fireplace, or a heritage repoint. I've got the hands and the eye to make it happen.
             No shortcuts. No mess left behind. Just proper brickwork that looks better in 20 years than the day it's finished.
           </p>
           <Link to="/about" className="text-[#CB4154] font-bold text-lg hover:underline inline-flex items-center gap-2">
