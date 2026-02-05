@@ -68,7 +68,7 @@ const Home: React.FC = () => {
                    }}
                  />
                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <span className="text-white oswald font-bold text-lg border-2 border-white px-6 py-2 uppercase tracking-widest">VIEW PROJECT</span>
+                    <Link to="/projects" className="text-white oswald font-bold text-lg border-2 border-white px-6 py-2 uppercase tracking-widest">VIEW PROJECT</span>
                  </div>
                </div>
              ))}
