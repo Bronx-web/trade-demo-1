@@ -12,7 +12,7 @@ const Home: React.FC = () => {
           <img 
             src={getAssetUrl(MASONRY_ASSETS.hero.main)} 
             alt="Brick wall craftsmanship" 
-            className="w-full h-full object-cover brightness-[0.35]"
+            className="w-full h-full object-cover brightness-[0.50]"
             onError={(e) => {
               // Safety fallback if local image fails
               (e.target as HTMLImageElement).src = 'https://images.pexels.com/photos/11236546/pexels-photo-11236546.jpeg';
@@ -68,7 +68,9 @@ const Home: React.FC = () => {
                    }}
                  />
                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <Link to="/projects" className="text-white oswald font-bold text-lg border-2 border-white px-6 py-2 uppercase tracking-widest">VIEW PROJECT</span>
+                    <Link to="/projects" className="text-white oswald font-bold text-lg border-2 border-white px-6 py-2 uppercase tracking-widest inline-block">
+                      VIEW PROJECT
+                  </Link>
                  </div>
                </div>
              ))}
