@@ -17,10 +17,10 @@ const FALLBACK_PROJECT = 'https://images.unsplash.com/photo-1581094794329-c8112a
 
 export const MASONRY_ASSETS = {
   branding: {
-    logo: 'images/logo.png', 
+    logo: '/images/logo.png', 
   },
   hero: {
-    main: 'images/hero-home.jpg', // Local asset
+    main: '/images/hero-home.jpg', // Local asset
     about: 'https://images.pexels.com/photos/11236546/pexels-photo-11236546.jpeg', // Currently external
   },
   services: {
@@ -33,21 +33,21 @@ export const MASONRY_ASSETS = {
       id: 1, 
       title: 'Modern Gray Veneer', 
       category: 'Residential', 
-      path: 'images/my-work-1.jpg', // Local asset
+      path: '/images/my-work-1.jpg', // Local asset
       fallback: 'https://www.bronxweb.nz/mock-ups-2/my-work-1.png' 
     },
     { 
       id: 2, 
       title: 'Heritage Restoration', 
       category: 'Commercial', 
-      path: 'images/my-work-2.jpg', // Local asset
+      path: '/images/my-work-2.jpg', // Local asset
       fallback: 'https://www.bronxweb.nz/mock-ups-2/pro-temp-img-1.png' 
     },
     { 
       id: 3, 
       title: 'Outdoor Living Area', 
       category: 'Landscape', 
-      path: 'images/my-work-3.jpg', // Local asset
+      path: '/images/my-work-3.jpg', // Local asset
       fallback: 'https://www.bronxweb.nz/mock-ups-2/pro-temp-img-2.png' 
     },
     { 
@@ -61,7 +61,7 @@ export const MASONRY_ASSETS = {
       id: 5, 
       title: 'Feature Brick Wall', 
       category: 'Interior', 
-      path: 'images/my-work-3.jpg', // Local asset
+      path: '/images/my-work-3.jpg', // Local asset
       fallback: 'https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&q=80&w=800' 
     },
     { 
@@ -73,7 +73,7 @@ export const MASONRY_ASSETS = {
     },
   ],
   misc: {
-    worker: 'images/hart-pic.jpg', // Local asset
+    worker: '/images/hart-pic.jpg', // Local asset
     placeholder: FALLBACK_PROJECT
   }
 };
@@ -82,9 +82,8 @@ export const MASONRY_ASSETS = {
  * getAssetUrl
  * 
  * Safely resolves an image path. 
- * Prioritizes full URLs, then converts any absolute-style paths (/images/...)
- * into relative ones (images/...) for maximum compatibility with preview environments
- * that serve local directories directly from the root.
+ * Prioritizes full URLs, then standardizes local paths to start with a leading slash '/'
+ * so they are resolved relative to the origin root. This is standard for SPA deployment on Netlify.
  */
 export const getAssetUrl = (path: string, fallback?: string) => {
   if (!path) return fallback || MASONRY_ASSETS.misc.placeholder;
@@ -94,8 +93,6 @@ export const getAssetUrl = (path: string, fallback?: string) => {
   // If it's already a full web URL (http:// or https://), use it directly.
   if (cleanPath.startsWith('http')) return cleanPath;
   
-  // For local paths, ensure it's relative. Strip any leading slash.
-  // This helps browsers find 'images/my-image.jpg' correctly when the 'images' folder
-  // is alongside 'index.html' in preview environments.
-  return cleanPath.startsWith('/') ? cleanPath.substring(1) : cleanPath;
+  // Ensure local paths start with a slash so they find the asset starting from the root URL.
+  return cleanPath.startsWith('/') ? cleanPath : `/${cleanPath}`;
 };
