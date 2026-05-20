@@ -20,7 +20,7 @@ export const MASONRY_ASSETS = {
     logo: 'images/logo.png', 
   },
   hero: {
-    main: 'https://github.com/Bronx-web/2-Mowing-template/blob/main/images/hero-home.png', // Local asset
+    main: 'images/hero-home.jpg', // Local asset
     about: 'https://images.pexels.com/photos/11236546/pexels-photo-11236546.jpeg', // Currently external
   },
   services: {
@@ -40,8 +40,8 @@ export const MASONRY_ASSETS = {
       id: 2, 
       title: 'Heritage Restoration', 
       category: 'Commercial', 
-      path: 'https://github.com/Bronx-web/2-Mowing-template/blob/main/images/image-5.png', // Local asset
-      fallback: 'https://github.com/Bronx-web/2-Mowing-template/blob/main/images/image-5.png' 
+      path: 'images/my-work-2.jpg', // Local asset
+      fallback: 'https://www.bronxweb.nz/mock-ups-2/pro-temp-img-1.png' 
     },
     { 
       id: 3, 
@@ -73,7 +73,7 @@ export const MASONRY_ASSETS = {
     },
   ],
   misc: {
-    worker: 'https://github.com/Bronx-web/2-Mowing-template/blob/main/images/hart-pic.png', // Local asset
+    worker: 'images/hart-pic.jpg', // Local asset
     placeholder: FALLBACK_PROJECT
   }
 };
@@ -94,6 +94,8 @@ export const getAssetUrl = (path: string, fallback?: string) => {
   // If it's already a full web URL (http:// or https://), use it directly.
   if (cleanPath.startsWith('http')) return cleanPath;
   
-  // Ensure local paths resolve correctly from the domain root on platforms like Netlify.
-  return cleanPath.startsWith('/') ? cleanPath : `/${cleanPath}`;
+  // For local paths, ensure it's relative. Strip any leading slash.
+  // This helps browsers find 'images/my-image.jpg' correctly when the 'images' folder
+  // is alongside 'index.html' in preview environments.
+  return cleanPath.startsWith('/') ? cleanPath.substring(1) : cleanPath;
 };
