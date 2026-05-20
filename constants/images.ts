@@ -73,7 +73,7 @@ export const MASONRY_ASSETS = {
     },
   ],
   misc: {
-    worker: '/images/hart-pic.jpg', // Local asset
+    worker: 'https://raw.githubusercontent.com/Bronx-web/trade-demo-1/refs/heads/main/images/hart-pic.jpg', // Local asset
     placeholder: FALLBACK_PROJECT
   }
 };
