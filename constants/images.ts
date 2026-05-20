@@ -20,7 +20,7 @@ export const MASONRY_ASSETS = {
     logo: '/images/logo.png', 
   },
   hero: {
-    main: '/images/hero-home.jpg', // Local asset
+    main: 'https://raw.githubusercontent.com/Bronx-web/trade-demo-1/refs/heads/main/images/hero-home.jpg', // Local asset
     about: 'https://images.pexels.com/photos/11236546/pexels-photo-11236546.jpeg', // Currently external
   },
   services: {
@@ -33,21 +33,21 @@ export const MASONRY_ASSETS = {
       id: 1, 
       title: 'Modern Gray Veneer', 
       category: 'Residential', 
-      path: '/images/my-work-1.jpg', // Local asset
+      path: 'https://raw.githubusercontent.com/Bronx-web/trade-demo-1/refs/heads/main/images/my-work-2.jpg', // Local asset
       fallback: 'https://www.bronxweb.nz/mock-ups-2/my-work-1.png' 
     },
     { 
       id: 2, 
       title: 'Heritage Restoration', 
       category: 'Commercial', 
-      path: '/images/my-work-2.jpg', // Local asset
+      path: 'https://raw.githubusercontent.com/Bronx-web/trade-demo-1/refs/heads/main/images/my-work-1.jpg', // Local asset
       fallback: 'https://www.bronxweb.nz/mock-ups-2/pro-temp-img-1.png' 
     },
     { 
       id: 3, 
       title: 'Outdoor Living Area', 
       category: 'Landscape', 
-      path: '/images/my-work-3.jpg', // Local asset
+      path: 'https://raw.githubusercontent.com/Bronx-web/trade-demo-1/refs/heads/main/images/hero-home.jpg', // Local asset
       fallback: 'https://www.bronxweb.nz/mock-ups-2/pro-temp-img-2.png' 
     },
     { 
@@ -61,7 +61,7 @@ export const MASONRY_ASSETS = {
       id: 5, 
       title: 'Feature Brick Wall', 
       category: 'Interior', 
-      path: '/images/my-work-3.jpg', // Local asset
+      path: 'https://raw.githubusercontent.com/Bronx-web/trade-demo-1/refs/heads/main/images/my-work-3.jpg', // Local asset
       fallback: 'https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&q=80&w=800' 
     },
     { 
