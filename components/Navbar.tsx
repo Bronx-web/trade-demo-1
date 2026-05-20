@@ -10,36 +10,32 @@ const Navbar: React.FC = () => {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Projects', path: '/projects' },
-    { name: 'Quote/Contact', path: '/contact' },
+    { name: 'Quote & Booking', path: '/booking' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
           <div className="flex items-center">
-            <Link to="/" className="flex-shrink-0 flex items-center gap-2">
-              <div className="w-10 h-10 bg-[#CB4154] flex items-center justify-center rounded-sm">
-                <span className="text-white font-oswald text-xl font-bold">H</span>
-              </div>
-              <span className="text-2xl font-oswald font-bold tracking-wider text-slate-800">
-                HART <span className="text-[#CB4154]">STONE</span>
+            <Link to="/" className="flex-shrink-0 flex items-center">
+              <span className="text-2xl font-bold tracking-tighter text-gray-900 oswald">
+                HART <span className="text-[#CB4154]">STONE</span> LTD
               </span>
             </Link>
           </div>
           
-          {/* Desktop Links */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link
-                key={link.name}
+                key={link.path}
                 to={link.path}
                 className={`text-sm font-semibold tracking-wide uppercase transition-colors duration-200 ${
-                  isActive(link.path)
-                    ? 'text-[#CB4154] border-b-2 border-[#CB4154]'
-                    : 'text-slate-600 hover:text-[#CB4154]'
+                  isActive(link.path) 
+                    ? 'text-[#CB4154] border-b-2 border-[#CB4154]' 
+                    : 'text-gray-600 hover:text-[#CB4154]'
                 }`}
               >
                 {link.name}
@@ -47,17 +43,16 @@ const Navbar: React.FC = () => {
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex md:hidden items-center">
+          <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-slate-600 hover:text-[#CB4154] focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none"
             >
-              <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {isOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 )}
               </svg>
             </button>
@@ -65,19 +60,19 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden bg-white border-b border-slate-200 animate-in slide-in-from-top duration-300">
+        <div className="md:hidden bg-white border-t border-gray-100 animate-in slide-in-from-top duration-300">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navLinks.map((link) => (
               <Link
-                key={link.name}
+                key={link.path}
                 to={link.path}
                 onClick={() => setIsOpen(false)}
-                className={`block px-3 py-3 text-base font-semibold uppercase ${
-                  isActive(link.path)
-                    ? 'text-[#CB4154] bg-slate-50'
-                    : 'text-slate-600 hover:bg-slate-50 hover:text-[#CB4154]'
+                className={`block px-3 py-2 rounded-md text-base font-medium ${
+                  isActive(link.path) 
+                    ? 'text-[#CB4154] bg-red-50' 
+                    : 'text-gray-600 hover:text-[#CB4154] hover:bg-gray-50'
                 }`}
               >
                 {link.name}

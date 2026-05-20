@@ -1,73 +1,80 @@
 
 import React from 'react';
-import Hero from '../components/Hero';
-import { PROJECTS } from '../constants';
 import { Link } from 'react-router-dom';
+import { MASONRY_ASSETS, getAssetUrl } from '../constants/images';
 
 const Home: React.FC = () => {
   return (
-    <div className="bg-white">
-      <Hero 
-        title="HART STONE LTD" 
-        subtitle="Precision masonry serving Christchurch and the Canterbury region. Built to the highest NZ standards."
-        image="https://images.unsplash.com/photo-1590059132213-f91ca9097f98?auto=format&fit=crop&q=80&w=2000"
-        showButton={true}
-      />
-
-      {/* PROCESS SECTION */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <span className="text-[#CB4154] font-bold uppercase tracking-widest text-sm mb-2 block">Our Process</span>
-            <h2 className="text-4xl font-oswald font-bold text-slate-900 uppercase">How we work</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {[
-              { step: "01", title: "Online Quote", desc: "Use our interactive tool to get an immediate ballpark estimate for your project." },
-              { step: "02", title: "Site Visit", desc: "We visit your site to confirm access, ground conditions, and architectural details." },
-              { step: "03", title: "Master Build", desc: "Execution of the masonry work to NZS 3604 standards with a clean, professional finish." }
-            ].map((item) => (
-              <div key={item.step} className="group p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-[#CB4154] transition-all">
-                <span className="text-5xl font-oswald font-bold text-slate-200 group-hover:text-[#CB4154] transition-colors mb-6 block">{item.step}</span>
-                <h3 className="text-xl font-oswald font-bold mb-4 uppercase">{item.title}</h3>
-                <p className="text-slate-500 leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
+    <div>
+      {/* Hero Section */}
+      <section className="relative h-[85vh] md:h-[80vh] flex items-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={getAssetUrl(MASONRY_ASSETS.hero.main)} 
+            alt="Brick wall craftsmanship" 
+            className="w-full h-full object-cover brightness-[0.50]"
+            onError={(e) => {
+              // Safety fallback if local image fails
+              (e.target as HTMLImageElement).src = 'https://images.pexels.com/photos/11236546/pexels-photo-11236546.jpeg';
+            }}
+          />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-white w-full">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold oswald leading-[1.1] mb-4">
+            BUILT TO LAST <br />
+            <span className="bg-[#CB4154] inline-block px-3 py-1 mt-2">FROM THE HART</span>
+          </h1>
+          <p className="mt-4 text-lg md:text-2xl font-light max-w-2xl text-gray-200">
+            25+ Years Turning Bricks into Statements. Precision masonry for high-end residential and commercial builds across Canterbury.
+          </p>
+          <div className="mt-10 flex flex-col sm:flex-row gap-4">
+            <Link to="/booking" className="inline-block bg-[#CB4154] hover:bg-[#b03848] text-white px-8 py-4 text-center rounded-sm font-bold oswald tracking-wider transition-all transform hover:scale-[1.02] active:scale-95">
+              GET AN INSTANT QUOTE
+            </Link>
+            <Link to="/projects" className="inline-block bg-white hover:bg-gray-100 text-gray-900 px-8 py-4 text-center rounded-sm font-bold oswald tracking-wider transition-all transform hover:scale-[1.02] active:scale-95">
+              VIEW RECENT WORK
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* FEATURED WORK */}
-      <section className="bg-slate-900 py-24 text-white">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row gap-16 items-center">
-          <div className="flex-1">
-            <h2 className="text-5xl font-oswald font-bold mb-8 uppercase leading-none">Canterbury <br/><span className="text-[#CB4154]">Craftsmanship</span></h2>
-            <p className="text-xl text-slate-400 mb-10 leading-relaxed">
-              From contemporary brick veneers in Rolleston to structural block walls in the Port Hills, we provide the expertise required for New Zealand's unique conditions.
-            </p>
-            <Link to="/projects" className="inline-block px-10 py-4 bg-[#CB4154] text-white font-bold uppercase tracking-widest hover:bg-white hover:text-slate-900 transition-all">View Gallery</Link>
-          </div>
-          <div className="flex-1 grid grid-cols-2 gap-4">
-             <div className="space-y-4">
-                <img src="https://picsum.photos/seed/mason1/400/500" className="rounded-xl grayscale hover:grayscale-0 transition-all" alt="Work" />
-                <img src="https://picsum.photos/seed/mason2/400/300" className="rounded-xl grayscale hover:grayscale-0 transition-all" alt="Work" />
-             </div>
-             <div className="space-y-4 pt-12">
-                <img src="https://picsum.photos/seed/mason3/400/300" className="rounded-xl grayscale hover:grayscale-0 transition-all" alt="Work" />
-                <img src="https://picsum.photos/seed/mason4/400/500" className="rounded-xl grayscale hover:grayscale-0 transition-all" alt="Work" />
-             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="bg-white py-24 text-center">
-        <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-4xl font-oswald font-bold mb-6 uppercase tracking-tight text-slate-900">Start your estimate online</h2>
-          <p className="text-lg text-slate-500 mb-12 italic">"A job well built is a job that lasts generations."</p>
-          <Link to="/contact" className="px-16 py-6 bg-slate-900 text-white font-oswald font-bold text-2xl uppercase tracking-widest hover:bg-[#CB4154] transition-all shadow-2xl">
-            Launch Calculator
+      {/* Intro Section */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold oswald mb-6 text-gray-900 uppercase">Master Craftsmanship</h2>
+          <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-10">
+            A time-served craftsman with a serious obsession for clean lines, perfect bonds, and details that make architects jealous. 
+            Whether you need a bulletproof structural build, a show-stopping outdoor fireplace, or a heritage repoint. I've got the hands and the eye to make it happen.
+            No shortcuts. No mess left behind. Just proper brickwork that looks better in 20 years than the day it's finished.
+          </p>
+          <Link to="/about" className="text-[#CB4154] font-bold text-lg hover:underline inline-flex items-center gap-2">
+            Find Out More <span>&rarr;</span>
           </Link>
+        </div>
+      </section>
+
+      {/* Featured Work Grid */}
+      <section className="py-12 md:py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+             {MASONRY_ASSETS.projects.slice(0, 4).map((project) => (
+               <div key={project.id} className="group relative overflow-hidden h-[300px] md:h-96 cursor-pointer bg-gray-200">
+                 <img 
+                   src={getAssetUrl(project.path)} 
+                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                   alt={project.title}
+                   onError={(e) => {
+                     (e.target as HTMLImageElement).src = project.fallback;
+                   }}
+                 />
+                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <Link to="/projects" className="text-white oswald font-bold text-lg border-2 border-white px-6 py-2 uppercase tracking-widest inline-block">
+                      VIEW PROJECT
+                  </Link>
+                 </div>
+               </div>
+             ))}
+          </div>
         </div>
       </section>
     </div>
