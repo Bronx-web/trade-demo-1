@@ -21,7 +21,7 @@ const Footer = forwardRef<HTMLElement>((props, ref) => {
             <h3 className="text-lg font-semibold oswald mb-4 uppercase tracking-wider">Quick Links</h3>
             <ul className="space-y-2">
               <li><Link to="/" className="text-gray-400 hover:text-white transition-colors">Home</Link></li>
-              <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors">My Story</Link></li>
+              <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors">About</Link></li>
               <li><Link to="/projects" className="text-gray-400 hover:text-white transition-colors">Projects</Link></li>
               <li><Link to="/booking" className="text-gray-400 hover:text-white transition-colors">Quote Calculator</Link></li>
             </ul>
@@ -37,7 +37,7 @@ const Footer = forwardRef<HTMLElement>((props, ref) => {
         </div>
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
           <p>© 2026 Hart Stone Ltd. All Rights Reserved | Built to NZS 3604 Standards</p>
-        
+
         </div>
       </div>
     </footer>
