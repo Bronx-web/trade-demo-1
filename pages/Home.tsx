@@ -56,14 +56,49 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Featured Work Grid */}
+      {/* How We Work */}
+      <section className="py-16 md:py-24 bg-soft-red">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="text-center mb-12">
+            <p className="text-[#F88913] font-bold tracking-widest uppercase text-sm mb-2">Our Process</p>
+            <h2 className="text-3xl md:text-4xl font-bold oswald text-gray-900 uppercase">How We Work</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {[
+              {
+                step: '01',
+                title: 'Online Quote',
+                description: 'Use our interactive tool to get an immediate ballpark estimate for your project.',
+              },
+              {
+                step: '02',
+                title: 'Site Visit',
+                description: 'We visit your site to confirm access, ground conditions, and architectural details.',
+              },
+              {
+                step: '03',
+                title: 'Master Build',
+                description: 'Execution of the masonry work to NZS 3604 standards with a clean, professional finish.',
+              },
+            ].map((item) => (
+              <div key={item.step}>
+                <span className="text-5xl font-bold oswald text-black/10">{item.step}</span>
+                <h3 className="text-xl font-bold oswald mt-2 mb-3 uppercase">{item.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Teaser */}
       <section className="py-12 md:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-             {MASONRY_ASSETS.projects.slice(0, 4).map((project) => (
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+             {MASONRY_ASSETS.projects.slice(0, 3).map((project) => (
                <div key={project.id} className="group relative overflow-hidden h-[300px] md:h-96 cursor-pointer bg-gray-200">
-                 <img 
-                   src={getAssetUrl(project.path)} 
+                 <img
+                   src={getAssetUrl(project.path)}
                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                    alt={project.title}
                    onError={(e) => {
@@ -77,6 +112,11 @@ const Home: React.FC = () => {
                  </div>
                </div>
              ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link to="/projects" className="inline-block bg-[#F88913] hover:bg-[#b03848] text-white px-8 py-4 rounded-sm font-bold oswald tracking-wider transition-all transform hover:scale-[1.02] active:scale-95">
+              VIEW FULL GALLERY
+            </Link>
           </div>
         </div>
       </section>
