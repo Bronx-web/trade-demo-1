@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
               <img
                 src={getAssetUrl(MASONRY_ASSETS.branding.logo)}
                 alt="Top Notch Brick and Block"
-                className="h-12 w-auto"
+                className="h-16 w-auto"
               />
             </Link>
           </div>

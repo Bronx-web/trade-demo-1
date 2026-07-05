@@ -37,7 +37,7 @@ const About: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-soft-red p-8 border-l-4 border-brick-orange rounded-r-lg text-left">
+            <div className="bg-soft-orange p-8 border-l-4 border-brick-orange rounded-r-lg text-left">
               <h3 className="text-xl font-bold oswald mb-4 uppercase">Industry Compliance</h3>
               <p className="text-gray-800 font-semibold mb-2">Built to NZS 3604 - The NZ Timber-Framed Buildings Standard</p>
               <p className="text-gray-600 text-sm">

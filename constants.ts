@@ -18,7 +18,7 @@ export const BRICK_RATES: QuoteRates = {
 };
 
 export const CONTACT_INFO = {
-  email: 'info@hartstoneltd.co.nz',
+  email: 'quotes@topnotch.co.nz',
   phone: '021-XXX-XXXX',
   address: 'Christchurch, NZ',
   areas: ['Christchurch City', 'Selwyn District', 'Waimakariri', 'Rolleston', 'Rangiora', 'Kaiapoi', 'Lincoln', 'Brighton']
