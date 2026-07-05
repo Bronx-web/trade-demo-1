@@ -31,7 +31,7 @@ const Home: React.FC = () => {
           {/* <p className="mt-4 text-base md:text-lg font-semibold text-[#F88913] italic">
             Building a better world, one brick at a time.
           </p> */}
-          <div className="mt-10 flex flex-col sm:flex-row gap-4">
+          <div className="mt-[12.5rem] flex flex-col sm:flex-row gap-4">
             <Link to="/booking" className="inline-block bg-[#F88913] hover:bg-[#b03848] text-white px-8 py-4 text-center rounded-sm font-bold oswald tracking-wider transition-all transform hover:scale-[1.02] active:scale-95">
               GET AN INSTANT QUOTE
             </Link>
