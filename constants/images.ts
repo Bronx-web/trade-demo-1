@@ -75,7 +75,7 @@ export const MASONRY_ASSETS = {
     },
   ],
   misc: {
-    worker: 'public/images/topnotch/work-4.jpg', // Local asset
+    worker: 'images/topnotch/work-4.jpg', // Local asset
     placeholder: FALLBACK_PROJECT,
     team: 'images/topnotch/team.jpg',
     // 'https://raw.githubusercontent.com/Bronx-web/trade-demo-1/refs/heads/main/images/hart-pic.jpg'
