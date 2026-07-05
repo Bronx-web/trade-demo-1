@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MASONRY_ASSETS, getAssetUrl } from '../constants/images';
+import FaqAccordion from '../components/FaqAccordion';
 
 const Home: React.FC = () => {
   return (
@@ -25,7 +26,7 @@ const Home: React.FC = () => {
             <span className="bg-[#F88913] inline-block px-3 py-1 mt-2">ONE BRICK AT A TIME</span>
           </h1>
           <p className="mt-4 text-lg md:text-2xl font-light max-w-2xl text-gray-200">
-            LBP (Verified) Delivering Precision Masonry for Residential & Commercial Builds.
+            Delivering Precision Brick & Block For Residential & Commercial Builds.
           </p>
           {/* <p className="mt-4 text-base md:text-lg font-semibold text-[#F88913] italic">
             Building a better world, one brick at a time.
@@ -44,20 +45,18 @@ const Home: React.FC = () => {
       {/* Intro Section */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold oswald mb-6 text-gray-900 uppercase">Master Craftsmanship</h2>
+          <h2 className="text-3xl md:text-4xl font-bold oswald mb-6 text-gray-900 uppercase">Top Notch Brick and Block</h2>
           <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-10">
-            A time-served craftsman with a serious obsession for clean lines, perfect bonds, and details that make architects jealous. 
+            We are a team ofcraftsman with a serious obsession for clean lines, perfect bonds, and details that make architects jealous. 
             Whether you need a bulletproof structural build, a show-stopping outdoor fireplace, or a heritage repoint. I've got the hands and the eye to make it happen.
             No shortcuts. No mess left behind. Just proper brickwork that looks better in 20 years than the day it's finished.
           </p>
-          <Link to="/about" className="text-[#F88913] font-bold text-lg hover:underline inline-flex items-center gap-2">
-            Find Out More <span>&rarr;</span>
-          </Link>
+          
         </div>
       </section>
 
       {/* How We Work */}
-      <section className="py-16 md:py-24 bg-soft-red">
+      <section className="py-16 md:py-24 bg-soft-orange">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-12">
             <p className="text-[#F88913] font-bold tracking-widest uppercase text-sm mb-2">Our Process</p>
@@ -78,7 +77,7 @@ const Home: React.FC = () => {
               {
                 step: '03',
                 title: 'Master Build',
-                description: 'Execution of the masonry work to NZS 3604 standards with a clean, professional finish.',
+                description: 'Execution of Brick and Block work to NZS 3604 standards with a clean, professional finish.',
               },
             ].map((item) => (
               <div key={item.step}>
@@ -92,32 +91,55 @@ const Home: React.FC = () => {
       </section>
 
       {/* Gallery Teaser */}
-      <section className="py-12 md:py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-             {MASONRY_ASSETS.projects.slice(0, 3).map((project) => (
-               <div key={project.id} className="group relative overflow-hidden h-[300px] md:h-96 cursor-pointer bg-gray-200">
-                 <img
-                   src={getAssetUrl(project.path)}
-                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                   alt={project.title}
-                   onError={(e) => {
-                     (e.target as HTMLImageElement).src = project.fallback;
-                   }}
-                 />
-                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <Link to="/projects" className="text-white oswald font-bold text-lg border-2 border-white px-6 py-2 uppercase tracking-widest inline-block">
-                      VIEW PROJECT
-                  </Link>
-                 </div>
-               </div>
-             ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link to="/projects" className="inline-block bg-[#F88913] hover:bg-[#b03848] text-white px-8 py-4 rounded-sm font-bold oswald tracking-wider transition-all transform hover:scale-[1.02] active:scale-95">
-              VIEW FULL GALLERY
+      <section className="py-20 md:py-28 bg-gray-900">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+            <div>
+              <p className="text-[#F88913] font-bold tracking-[0.2em] uppercase text-xs md:text-sm mb-3">Selected Work</p>
+              <h2 className="text-4xl md:text-5xl font-bold oswald uppercase text-white leading-tight">
+                Recent Builds
+              </h2>
+            </div>
+            <Link to="/projects" className="shrink-0 group inline-flex items-center gap-3 text-white font-bold oswald tracking-wider uppercase text-sm">
+              View Full Gallery
+              <span className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-white/30 group-hover:border-[#F88913] group-hover:bg-[#F88913] transition-all">
+                <span className="group-hover:translate-x-0.5 transition-transform">&rarr;</span>
+              </span>
             </Link>
           </div>
+
+          {/* Single hero frame anchors the section */}
+          {MASONRY_ASSETS.projects[0] && (
+            <Link
+              to="/projects"
+              className="group relative block overflow-hidden rounded-lg h-80 md:h-[32rem]"
+            >
+              <img
+                src={getAssetUrl(MASONRY_ASSETS.projects[0].path)}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                alt={MASONRY_ASSETS.projects[0].title}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = MASONRY_ASSETS.projects[0].fallback;
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 p-6 md:p-8">
+                <span className="text-[#F88913] text-xs font-bold uppercase tracking-widest">{MASONRY_ASSETS.projects[0].category}</span>
+                <h3 className="text-white oswald font-bold text-2xl md:text-3xl uppercase mt-1">{MASONRY_ASSETS.projects[0].title}</h3>
+              </div>
+            </Link>
+          )}
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="text-center mb-12">
+            <h2 className="text-[#F88913] font-bold tracking-widest uppercase text-sm mb-2">FAQs</h2>
+            <h3 className="text-3xl md:text-4xl font-bold oswald text-gray-900 uppercase">Common Questions</h3>
+          </div>
+          <FaqAccordion />
         </div>
       </section>
     </div>
