@@ -18,10 +18,10 @@ const About: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div className="space-y-8">
             <div>
-              <h2 className="text-3xl font-bold oswald mb-4">With a Wealth of Experience...</h2>
+              <h2 className="text-3xl font-bold oswald mb-4">Licensed. Verified. Built Right.</h2>
               <p className="text-gray-600 leading-relaxed text-lg">
-                Operating with successful business partners for 25 years, I bring proven crafting strategies for longevity. 
-                With a love for the arts, I have the eye for detail. A proficiency in new builds with heavy deadlines 
+                As a Licensed Building Practitioner (verified), I bring proven crafting strategies for longevity.
+                With a love for the arts, I have the eye for detail. A proficiency in new builds with heavy deadlines
                 to small builds with high detail. I have the perfect balance of design & ingenuity.
               </p>
             </div>
@@ -46,7 +46,7 @@ const About: React.FC = () => {
                   "All detailing signed off as code-compliant"
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <span className="text-[#CB4154] font-bold">✓</span>
+                    <span className="text-[#F88913] font-bold">✓</span>
                     <span className="text-gray-700">{item}</span>
                   </li>
                 ))}

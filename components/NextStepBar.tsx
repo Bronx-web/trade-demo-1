@@ -69,7 +69,7 @@ const NextStepBar: React.FC<NextStepBarProps> = ({ footerRef }) => {
     >
       <button
         onClick={handleNavigation}
-        className="w-full bg-[#CB4154] text-white py-6 px-4 shadow-[0_-4px_20px_rgba(0,0,0,0.15)] flex items-center justify-center gap-3 active:brightness-90 transition-all"
+        className="w-full bg-[#F88913] text-white py-6 px-4 shadow-[0_-4px_20px_rgba(0,0,0,0.15)] flex items-center justify-center gap-3 active:brightness-90 transition-all"
       >
         <span className="oswald font-bold text-xl uppercase tracking-widest">
           {currentStep.label}

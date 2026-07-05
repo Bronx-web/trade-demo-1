@@ -22,13 +22,16 @@ const Home: React.FC = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-white w-full">
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold oswald leading-[1.1] mb-4">
             BUILT TO LAST <br />
-            <span className="bg-[#CB4154] inline-block px-3 py-1 mt-2">FROM THE HART</span>
+            <span className="bg-[#F88913] inline-block px-3 py-1 mt-2">ONE BRICK AT A TIME</span>
           </h1>
           <p className="mt-4 text-lg md:text-2xl font-light max-w-2xl text-gray-200">
-            25+ Years Turning Bricks into Statements. Precision masonry for high-end residential and commercial builds across Canterbury.
+            LBP (Verified) Delivering Precision Masonry for Residential & Commercial Builds.
           </p>
+          {/* <p className="mt-4 text-base md:text-lg font-semibold text-[#F88913] italic">
+            Building a better world, one brick at a time.
+          </p> */}
           <div className="mt-10 flex flex-col sm:flex-row gap-4">
-            <Link to="/booking" className="inline-block bg-[#CB4154] hover:bg-[#b03848] text-white px-8 py-4 text-center rounded-sm font-bold oswald tracking-wider transition-all transform hover:scale-[1.02] active:scale-95">
+            <Link to="/booking" className="inline-block bg-[#F88913] hover:bg-[#b03848] text-white px-8 py-4 text-center rounded-sm font-bold oswald tracking-wider transition-all transform hover:scale-[1.02] active:scale-95">
               GET AN INSTANT QUOTE
             </Link>
             <Link to="/projects" className="inline-block bg-white hover:bg-gray-100 text-gray-900 px-8 py-4 text-center rounded-sm font-bold oswald tracking-wider transition-all transform hover:scale-[1.02] active:scale-95">
@@ -47,7 +50,7 @@ const Home: React.FC = () => {
             Whether you need a bulletproof structural build, a show-stopping outdoor fireplace, or a heritage repoint. I've got the hands and the eye to make it happen.
             No shortcuts. No mess left behind. Just proper brickwork that looks better in 20 years than the day it's finished.
           </p>
-          <Link to="/about" className="text-[#CB4154] font-bold text-lg hover:underline inline-flex items-center gap-2">
+          <Link to="/about" className="text-[#F88913] font-bold text-lg hover:underline inline-flex items-center gap-2">
             Find Out More <span>&rarr;</span>
           </Link>
         </div>

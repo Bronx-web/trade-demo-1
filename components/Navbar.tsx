@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { MASONRY_ASSETS, getAssetUrl } from '../constants/images';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,9 +22,11 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between h-20">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center">
-              <span className="text-2xl font-bold tracking-tighter text-gray-900 oswald">
-                HART <span className="text-[#CB4154]">STONE</span> LTD
-              </span>
+              <img
+                src={getAssetUrl(MASONRY_ASSETS.branding.logo)}
+                alt="Top Notch Brick and Block"
+                className="h-12 w-auto"
+              />
             </Link>
           </div>
           
@@ -34,8 +37,8 @@ const Navbar: React.FC = () => {
                 to={link.path}
                 className={`text-sm font-semibold tracking-wide uppercase transition-colors duration-200 ${
                   isActive(link.path) 
-                    ? 'text-[#CB4154] border-b-2 border-[#CB4154]' 
-                    : 'text-gray-600 hover:text-[#CB4154]'
+                    ? 'text-[#F88913] border-b-2 border-[#F88913]' 
+                    : 'text-gray-600 hover:text-[#F88913]'
                 }`}
               >
                 {link.name}
@@ -71,8 +74,8 @@ const Navbar: React.FC = () => {
                 onClick={() => setIsOpen(false)}
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive(link.path) 
-                    ? 'text-[#CB4154] bg-red-50' 
-                    : 'text-gray-600 hover:text-[#CB4154] hover:bg-gray-50'
+                    ? 'text-[#F88913] bg-red-50' 
+                    : 'text-gray-600 hover:text-[#F88913] hover:bg-gray-50'
                 }`}
               >
                 {link.name}

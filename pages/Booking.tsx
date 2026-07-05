@@ -97,7 +97,9 @@ const Booking: React.FC = () => {
     setIsCalculating(true);
     setShowSummary(false); // Hide summary while calculating
     calculateEstimate(); // Recalculate based on current inputs
-    
+
+    // Supabase connects here: insert into `quotes` (serviceType, area, complexity,
+    // includeMaterials, specialInstructions, estimate) once calculated
     setTimeout(() => {
       setIsCalculating(false);
       setShowSummary(true); // Show summary after delay
@@ -113,7 +115,7 @@ const Booking: React.FC = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Header Banner */}
-      <div className="bg-[#CB4154] text-white py-12 md:py-16 px-6">
+      <div className="bg-[#F88913] text-white py-12 md:py-16 px-6">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-3xl md:text-6xl font-bold oswald uppercase leading-tight">Instant Quote Calculator</h1>
           <p className="mt-2 text-lg md:text-xl font-light opacity-90">Fair pricing. Clean work. No hidden surprises.</p>
@@ -125,9 +127,9 @@ const Booking: React.FC = () => {
         <div className="flex flex-col gap-6 md:gap-8">
           
           {/* 1. Project Details Section */}
-          <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg border-t-4 border-[#CB4154]">
+          <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg border-t-4 border-[#F88913]">
             <h2 className="text-xl md:text-2xl font-bold oswald mb-6 flex items-center gap-3 uppercase">
-              <svg className="w-5 h-5 md:w-6 md:h-6 text-[#CB4154]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+              <svg className="w-5 h-5 md:w-6 md:h-6 text-[#F88913]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
               Project Details
             </h2>
             
@@ -137,7 +139,7 @@ const Booking: React.FC = () => {
                 <select 
                   value={serviceType}
                   onChange={(e) => setServiceType(e.target.value as ServiceType)}
-                  className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-[#CB4154] outline-none text-sm md:text-base appearance-none"
+                  className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-[#F88913] outline-none text-sm md:text-base appearance-none"
                 >
                   <option value={ServiceType.BRICK}>Bricklaying (Standard)</option>
                   <option value={ServiceType.BLOCK}>Blocklaying (Standard)</option>
@@ -151,7 +153,7 @@ const Booking: React.FC = () => {
                 <input 
                   type="number" 
                   placeholder="e.g. 50" 
-                  className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-[#CB4154] outline-none text-sm md:text-base"
+                  className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-[#F88913] outline-none text-sm md:text-base"
                   value={area === 0 ? '' : area}
                   onChange={(e) => setArea(Number(e.target.value))}
                 />
@@ -162,7 +164,7 @@ const Booking: React.FC = () => {
                 <select 
                   value={complexity}
                   onChange={(e) => setComplexity(Number(e.target.value))}
-                  className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-[#CB4154] outline-none text-sm md:text-base appearance-none"
+                  className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-[#F88913] outline-none text-sm md:text-base appearance-none"
                 >
                   <option value={1.0}>Standard (Flat, Easy Access)</option>
                   <option value={1.2}>Moderate (Sloped, Corners)</option>
@@ -176,7 +178,7 @@ const Booking: React.FC = () => {
                   id="materials"
                   checked={includeMaterials}
                   onChange={(e) => setIncludeMaterials(e.target.checked)}
-                  className="w-5 h-5 accent-[#CB4154] cursor-pointer"
+                  className="w-5 h-5 accent-[#F88913] cursor-pointer"
                 />
                 <label htmlFor="materials" className="text-sm font-semibold text-gray-700 cursor-pointer">Include Materials</label>
               </div>
@@ -186,7 +188,7 @@ const Booking: React.FC = () => {
                 <label className="block text-xs font-bold text-gray-500 uppercase mb-1.5 tracking-wider">Special Instructions</label>
                 <textarea 
                   rows={3}
-                  className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-[#CB4154] outline-none text-sm md:text-base"
+                  className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-[#F88913] outline-none text-sm md:text-base"
                   placeholder="e.g., specific site access details..."
                   value={specialInstructions}
                   onChange={(e) => setSpecialInstructions(e.target.value)}
@@ -202,7 +204,7 @@ const Booking: React.FC = () => {
               disabled={!isCalculateButtonEnabled || isCalculating}
               className={`flex items-center gap-3 px-8 py-4 rounded-md font-bold oswald text-xl uppercase tracking-widest transition-all duration-300
                 ${isCalculateButtonEnabled && !isCalculating 
-                  ? 'bg-[#CB4154] text-white hover:bg-[#b03848] active:scale-95 shadow-md' 
+                  ? 'bg-[#F88913] text-white hover:bg-[#b03848] active:scale-95 shadow-md' 
                   : 'bg-gray-200 text-gray-500 cursor-not-allowed'
                 }`}
             >
@@ -232,9 +234,9 @@ const Booking: React.FC = () => {
 
           {/* 2. Estimation Summary Section - Observing this element for button visibility */}
           {showSummary && (
-            <div ref={quoteSummaryRef} className="bg-white p-6 md:p-8 rounded-lg shadow-xl border-t-8 border-[#CB4154] animate-in fade-in duration-500">
+            <div ref={quoteSummaryRef} className="bg-white p-6 md:p-8 rounded-lg shadow-xl border-t-8 border-[#F88913] animate-in fade-in duration-500">
               <h3 className="text-xl md:text-2xl font-bold oswald mb-6 border-b pb-4 flex items-center gap-2 uppercase">
-                <svg className="w-5 h-5 md:w-6 md:h-6 text-[#CB4154]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <svg className="w-5 h-5 md:w-6 md:h-6 text-[#F88913]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 Quote Summary
               </h3>
               
@@ -260,23 +262,23 @@ const Booking: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-col justify-center items-center bg-[#CB4154]/5 p-6 rounded-lg border border-[#CB4154]/10">
-                  <p className="text-[10px] md:text-xs font-bold text-[#CB4154] uppercase tracking-widest mb-1">Total Estimate</p>
-                  <p className="text-4xl md:text-5xl font-bold text-[#CB4154] oswald">{formatCurrency(estimate.total)}</p>
+                <div className="flex flex-col justify-center items-center bg-[#F88913]/5 p-6 rounded-lg border border-[#F88913]/10">
+                  <p className="text-[10px] md:text-xs font-bold text-[#F88913] uppercase tracking-widest mb-1">Total Estimate</p>
+                  <p className="text-4xl md:text-5xl font-bold text-[#F88913] oswald">{formatCurrency(estimate.total)}</p>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex items-start gap-2 text-xs text-gray-400 italic leading-tight">
-                  <span className="text-[#CB4154] font-bold mt-0.5">*</span>
+                  <span className="text-[#F88913] font-bold mt-0.5">*</span>
                   <p>Estimated m² rates for labour and materials. Final fixed price issued after site inspection.</p>
                 </div>
                 <div className="flex items-start gap-2 text-xs text-gray-400 italic leading-tight">
-                  <span className="text-[#CB4154] font-bold mt-0.5">*</span>
+                  <span className="text-[#F88913] font-bold mt-0.5">*</span>
                   <p>All work carries a 10-year craftsmanship guarantee and is compliant with NZS 3604.</p>
                 </div>
                 <div className="flex items-start gap-2 text-xs text-gray-400 italic leading-tight">
-                  <span className="text-[#CB4154] font-bold mt-0.5">*</span>
+                  <span className="text-[#F88913] font-bold mt-0.5">*</span>
                   <p>Happy with quote book a call to finalise details.</p>
                 </div>
               </div>
@@ -292,9 +294,12 @@ const Booking: React.FC = () => {
           showActionButton ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0' 
         }`}
       >
+        {/* Supabase connects here (optional): log lead-tracking event e.g. "user proceeded to
+            booking" if desired — actual booking confirmation happens inside Calendly's iframe below,
+            external to this codebase */}
         <button
           onClick={() => setIsBookingModalOpen(true)}
-          className="w-full bg-[#CB4154] text-white py-5 px-4 shadow-[0_-4px_20px_rgba(0,0,0,0.15)] flex items-center justify-center gap-3 active:brightness-90 transition-all"
+          className="w-full bg-[#F88913] text-white py-5 px-4 shadow-[0_-4px_20px_rgba(0,0,0,0.15)] flex items-center justify-center gap-3 active:brightness-90 transition-all"
           aria-label="Send Job Request"
         >
           <span className="oswald font-bold text-xl uppercase tracking-widest">
