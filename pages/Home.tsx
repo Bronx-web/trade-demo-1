@@ -9,9 +9,9 @@ const Home: React.FC = () => {
       {/* Hero Section */}
       <section className="relative h-[85vh] md:h-[80vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            src={getAssetUrl(MASONRY_ASSETS.hero.main)} 
-            alt="Brick wall craftsmanship" 
+          <img
+            src={getAssetUrl(MASONRY_ASSETS.hero.main)}
+            alt="Brick wall craftsmanship"
             className="w-full h-full object-cover brightness-[0.50]"
             onError={(e) => {
               // Safety fallback if local image fails
