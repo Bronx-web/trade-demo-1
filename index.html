@@ -1,50 +1,42 @@
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>Hart Stone Ltd | Brick & Block</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- PER-CLIENT: title, description, canonical, OG tags and schema below -->
+  <title>Hart Stone Ltd | Brick & Block Layers Canterbury</title>
+  <meta name="description" content="Licensed brick and block layers serving the greater Canterbury region. Instant online quotes, quality masonry built to NZS 3604." />
+  <link rel="canonical" href="https://site-preview-v1.netlify.app/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hart Stone Ltd | Brick & Block Layers Canterbury" />
+  <meta property="og:description" content="Licensed brick and block layers serving the greater Canterbury region. Instant online quotes." />
+  <meta property="og:url" content="https://site-preview-v1.netlify.app/" />
+  <meta property="og:image" content="https://site-preview-v1.netlify.app/images/hero-home.jpg" />
+
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    h1, h2, h3, .oswald {
-      font-family: 'Oswald', sans-serif;
-    }
-    .brick-orange { color: #CB4154; }
-    .bg-brick-orange { background-color: #CB4154; }
-    .bg-soft-red { background-color: #fceded; }
-    .border-brick-orange { border-color: #CB4154; }
-    
-    /* Custom transition for mobile menu */
-    .mobile-menu-enter {
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      transition: all 0.3s ease-out;
-    }
-    .mobile-menu-enter-active {
-      max-height: 400px;
-      opacity: 1;
-    }
-  </style>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0",
-    "images": "https://esm.sh/images@^3.2.4"
+
+  <!-- PER-CLIENT: LocalBusiness schema — update every field for the client -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Hart Stone Ltd",
+    "description": "Licensed brick and block layers serving the greater Canterbury region.",
+    "url": "https://site-preview-v1.netlify.app/",
+    "telephone": "+64-21-XXX-XXXX",
+    "email": "info@hartstoneltd.co.nz",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Christchurch",
+      "addressRegion": "Canterbury",
+      "addressCountry": "NZ"
+    },
+    "areaServed": ["Christchurch City", "Selwyn District", "Waimakariri", "Rolleston", "Rangiora", "Kaiapoi", "Lincoln", "Brighton"],
+    "priceRange": "$$"
   }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
+  </script>
 </head>
 <body class="bg-gray-50 text-gray-900 overflow-x-hidden">
   <div id="root"></div>

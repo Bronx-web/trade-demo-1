@@ -20,7 +20,7 @@ export const MASONRY_ASSETS = {
     logo: '/images/logo.png', 
   },
   hero: {
-    main: 'https://raw.githubusercontent.com/Bronx-web/trade-demo-1/refs/heads/main/images/hero-home.jpg', // Local asset
+    main: '/images/hero-home.jpg', // Local asset
     about: 'https://images.pexels.com/photos/11236546/pexels-photo-11236546.jpeg', // Currently external
   },
   services: {
@@ -33,21 +33,21 @@ export const MASONRY_ASSETS = {
       id: 1, 
       title: 'Modern Gray Veneer', 
       category: 'Residential', 
-      path: 'https://raw.githubusercontent.com/Bronx-web/trade-demo-1/refs/heads/main/images/my-work-2.jpg', // Local asset
+      path: '/images/my-work-2.jpg', // Local asset
       fallback: 'https://www.bronxweb.nz/mock-ups-2/my-work-1.png' 
     },
     { 
       id: 2, 
       title: 'Heritage Restoration', 
       category: 'Commercial', 
-      path: 'https://raw.githubusercontent.com/Bronx-web/trade-demo-1/refs/heads/main/images/my-work-1.jpg', // Local asset
+      path: '/images/my-work-1.jpg', // Local asset
       fallback: 'https://www.bronxweb.nz/mock-ups-2/pro-temp-img-1.png' 
     },
     { 
       id: 3, 
       title: 'Outdoor Living Area', 
       category: 'Landscape', 
-      path: 'https://raw.githubusercontent.com/Bronx-web/trade-demo-1/refs/heads/main/images/hero-home.jpg', // Local asset
+      path: '/images/hero-home.jpg', // Local asset
       fallback: 'https://www.bronxweb.nz/mock-ups-2/pro-temp-img-2.png' 
     },
     { 
@@ -61,19 +61,19 @@ export const MASONRY_ASSETS = {
       id: 5, 
       title: 'Feature Brick Wall', 
       category: 'Interior', 
-      path: 'https://raw.githubusercontent.com/Bronx-web/trade-demo-1/refs/heads/main/images/my-work-3.jpg', // Local asset
+      path: '/images/my-work-3.jpg', // Local asset
       fallback: 'https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&q=80&w=800' 
     },
     { 
       id: 6, 
       title: 'Retaining Solution', 
       category: 'Infrastructure', 
-      path: 'https://www.bowersbrothers.co.nz/wp-content/uploads/2025/04/Brentwood-Estate-Taupo.jpg', // Currently external
+      path: 'https://images.unsplash.com/photo-1634733988138-bf2c3a2a13fa?auto=format&fit=crop&q=80&w=800', // Stock — replace with client photo
       fallback: 'https://images.unsplash.com/photo-1634733988138-bf2c3a2a13fa?auto=format&fit=crop&q=80&w=800' 
     },
   ],
   misc: {
-    worker: 'https://raw.githubusercontent.com/Bronx-web/trade-demo-1/refs/heads/main/images/hart-pic.jpg', // Local asset
+    worker: '/images/hart-pic.jpg', // Local asset
     placeholder: FALLBACK_PROJECT
   }
 };

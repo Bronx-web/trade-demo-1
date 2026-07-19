@@ -1,12 +1,13 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { BRICK_RATES, CONTACT_INFO } from '../constants';
+import { BRICK_RATES, CONTACT_INFO, LEAD_ENDPOINT, PHONE_HREF } from '../constants';
 import { ServiceType } from '../types';
 
 /**
  * Booking Component
- * 
- * This page handles the premium quote calculator and lead capture via Calendly.
+ *
+ * This page handles the premium quote calculator and lead capture via a custom
+ * form that posts the quote payload to Google Apps Script → Google Sheets.
  * It uses the 'labour' spelling to align with AU/NZ English standards.
  */
 const Booking: React.FC = () => {
@@ -23,6 +24,10 @@ const Booking: React.FC = () => {
   // Existing state for the sticky action button and the booking modal
   const [showActionButton, setShowActionButton] = useState(false);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+
+  // Lead form state — posts to Google Apps Script (see LEAD_ENDPOINT in constants.ts)
+  const [lead, setLead] = useState({ name: '', phone: '', email: '', suburb: '', preferredTime: 'Anytime' });
+  const [sendStatus, setSendStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   // Ref for the element to observe for scroll (e.g., the end of the quote summary)
   const quoteSummaryRef = useRef<HTMLDivElement>(null);
@@ -109,6 +114,60 @@ const Booking: React.FC = () => {
   };
 
   const isCalculateButtonEnabled = area > 0;
+
+  const SERVICE_LABELS: Record<ServiceType, string> = {
+    [ServiceType.BRICK]: 'Bricklaying (Standard)',
+    [ServiceType.BLOCK]: 'Blocklaying (Standard)',
+    [ServiceType.VENEER]: 'Brick Veneer',
+    [ServiceType.RETAINING]: 'Block Retaining Wall'
+  };
+
+  const complexityLabel =
+    complexity === 1.5 ? 'Complex (High Detail, Bad Access)' :
+    complexity === 1.2 ? 'Moderate (Sloped, Corners)' :
+    'Standard (Flat, Easy Access)';
+
+  const handleLeadSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!LEAD_ENDPOINT) {
+      // Not configured yet — without this guard the fetch would hit the current
+      // page and a 200 would read as a fake success.
+      console.error('LEAD_ENDPOINT is not set in constants.ts — lead not sent.');
+      setSendStatus('error');
+      return;
+    }
+    setSendStatus('sending');
+    try {
+      // No custom headers — keeps this a "simple" request so the Apps Script
+      // web app accepts it without a CORS preflight.
+      const res = await fetch(LEAD_ENDPOINT, {
+        method: 'POST',
+        body: JSON.stringify({
+          name: lead.name,
+          phone: lead.phone,
+          email: lead.email,
+          suburb: lead.suburb,
+          preferredTime: lead.preferredTime,
+          service: SERVICE_LABELS[serviceType],
+          areaM2: area,
+          complexity: complexityLabel,
+          materialsIncluded: includeMaterials,
+          labour: estimate.labour,
+          materials: estimate.materials,
+          subtotal: estimate.subtotal,
+          gst: estimate.gst,
+          total: estimate.total,
+          specialInstructions,
+          source: window.location.href
+        })
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      setSendStatus('success');
+    } catch (err) {
+      console.error('Lead submit failed:', err);
+      setSendStatus('error');
+    }
+  };
 
   return (
     <div className="bg-gray-50 min-h-screen">
@@ -293,12 +352,12 @@ const Booking: React.FC = () => {
         }`}
       >
         <button
-          onClick={() => setIsBookingModalOpen(true)}
+          onClick={() => { setSendStatus('idle'); setIsBookingModalOpen(true); }}
           className="w-full bg-[#CB4154] text-white py-5 px-4 shadow-[0_-4px_20px_rgba(0,0,0,0.15)] flex items-center justify-center gap-3 active:brightness-90 transition-all"
           aria-label="Send Job Request"
         >
           <span className="oswald font-bold text-xl uppercase tracking-widest">
-            Send Job Request & Book a Call
+            Send Job Request
           </span>
           <svg 
             className="w-6 h-6 animate-pulse" 
@@ -327,18 +386,112 @@ const Booking: React.FC = () => {
             >
               <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
-            <div className="p-6 md:p-8 pt-12 md:pt-14 overflow-y-auto">
-              <h2 id="booking-modal-title" className="text-xl md:text-2xl font-bold oswald mb-6 uppercase">Send Job Request</h2>
-              <div className="w-full" style={{ minHeight: '600px' }}>
-                <iframe
-                  src="https://calendly.com/bronxweb/bronxweb-discovery-call"
-                  width="100%"
-                  height="600px" 
-                  frameBorder="0"
-                  title="Select a Date & Time"
-                  className="rounded-md"
-                ></iframe>
-              </div>
+            <div className="p-6 md:p-8 pt-12 md:pt-14 overflow-y-auto max-h-[85vh]">
+              <h2 id="booking-modal-title" className="text-xl md:text-2xl font-bold oswald mb-2 uppercase">Send Job Request</h2>
+
+              {sendStatus === 'success' ? (
+                <div className="text-center py-10">
+                  <div className="mx-auto w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-4">
+                    <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" /></svg>
+                  </div>
+                  <h3 className="text-xl font-bold oswald uppercase mb-2">Request Sent</h3>
+                  <p className="text-gray-600 mb-6">Your quote and details are in. We'll call you back to lock in a time.</p>
+                  <button
+                    onClick={() => setIsBookingModalOpen(false)}
+                    className="bg-[#CB4154] text-white px-8 py-3 rounded-md font-bold oswald uppercase tracking-widest"
+                  >
+                    Done
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <p className="text-sm text-gray-500 mb-6">
+                    Your quote comes with the request — <span className="font-semibold text-gray-800">{SERVICE_LABELS[serviceType]}, {area} m², {formatCurrency(estimate.total)} incl. GST</span>. Just add your details and we'll call you back.
+                  </p>
+                  <form onSubmit={handleLeadSubmit} className="space-y-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label htmlFor="lead-name" className="block text-xs font-bold text-gray-500 uppercase mb-1.5 tracking-wider">Name *</label>
+                        <input
+                          id="lead-name"
+                          type="text"
+                          required
+                          autoComplete="name"
+                          className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-[#CB4154] outline-none text-sm md:text-base"
+                          value={lead.name}
+                          onChange={(e) => setLead({ ...lead, name: e.target.value })}
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="lead-phone" className="block text-xs font-bold text-gray-500 uppercase mb-1.5 tracking-wider">Phone *</label>
+                        <input
+                          id="lead-phone"
+                          type="tel"
+                          required
+                          autoComplete="tel"
+                          className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-[#CB4154] outline-none text-sm md:text-base"
+                          value={lead.phone}
+                          onChange={(e) => setLead({ ...lead, phone: e.target.value })}
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="lead-email" className="block text-xs font-bold text-gray-500 uppercase mb-1.5 tracking-wider">Email</label>
+                        <input
+                          id="lead-email"
+                          type="email"
+                          autoComplete="email"
+                          className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-[#CB4154] outline-none text-sm md:text-base"
+                          value={lead.email}
+                          onChange={(e) => setLead({ ...lead, email: e.target.value })}
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="lead-suburb" className="block text-xs font-bold text-gray-500 uppercase mb-1.5 tracking-wider">Suburb</label>
+                        <input
+                          id="lead-suburb"
+                          type="text"
+                          className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-[#CB4154] outline-none text-sm md:text-base"
+                          value={lead.suburb}
+                          onChange={(e) => setLead({ ...lead, suburb: e.target.value })}
+                        />
+                      </div>
+                      <div className="col-span-1 sm:col-span-2">
+                        <label htmlFor="lead-time" className="block text-xs font-bold text-gray-500 uppercase mb-1.5 tracking-wider">Best Time To Call</label>
+                        <select
+                          id="lead-time"
+                          className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-[#CB4154] outline-none text-sm md:text-base appearance-none"
+                          value={lead.preferredTime}
+                          onChange={(e) => setLead({ ...lead, preferredTime: e.target.value })}
+                        >
+                          <option>Anytime</option>
+                          <option>Morning</option>
+                          <option>Afternoon</option>
+                          <option>After 5pm</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    {sendStatus === 'error' && (
+                      <div className="bg-red-50 border border-red-200 rounded-md p-4 text-sm text-red-700">
+                        Something went wrong sending your request. Give us a call instead on{' '}
+                        <a href={PHONE_HREF} className="font-bold underline">{CONTACT_INFO.phone}</a>.
+                      </div>
+                    )}
+
+                    <button
+                      type="submit"
+                      disabled={sendStatus === 'sending'}
+                      className={`w-full py-4 rounded-md font-bold oswald text-lg uppercase tracking-widest transition-all
+                        ${sendStatus === 'sending'
+                          ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                          : 'bg-[#CB4154] text-white hover:bg-[#b03848] active:scale-[0.99]'
+                        }`}
+                    >
+                      {sendStatus === 'sending' ? 'Sending…' : 'Send Job Request'}
+                    </button>
+                  </form>
+                </>
+              )}
             </div>
           </div>
         </div>
