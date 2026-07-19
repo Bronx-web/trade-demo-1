@@ -29,7 +29,7 @@ const Home: React.FC = () => {
             <span className="bg-[#CB4154] inline-block px-3 py-1 mt-2">{SITE.heroLine2}</span>
           </h1>
           <p className="mt-4 text-lg md:text-2xl font-light max-w-2xl text-gray-200">
-            Precision Work for Residential & Commercial Brick & Block Work in {SITE.regionLabel}.
+            Precision Work for Residential & Commercial Projects in {SITE.regionLabel}.
           </p>
           <div className="mt-[12.5rem] flex flex-col sm:flex-row gap-4">
             <Link to="/booking" className="inline-block bg-[#CB4154] hover:bg-[#b03848] text-white px-8 py-4 text-center rounded-sm font-bold oswald tracking-wider transition-all transform hover:scale-[1.02] active:scale-95">
@@ -48,7 +48,7 @@ const Home: React.FC = () => {
       {/* Intro Section */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold oswald mb-6 text-gray-900 uppercase">Experienced Brick Block Craftsman</h2>
+          <h2 className="text-3xl md:text-4xl font-bold oswald mb-6 text-gray-900 uppercase">Ko Mātou Korero, Ko Wai Mātou</h2>
           <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-10">
             With a team of time-served craftsman with a serious obsession for clean lines, perfect bonds. You can trust {SITE.name} to deliver a professional finish every time.
             Whether you need a bulletproof structural build, a show-stopping outdoor fireplace, or a heritage repoint. I've got the hands and the experience to make it happen.
