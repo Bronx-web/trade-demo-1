@@ -13,10 +13,12 @@ Workflow: user supplies client details gathered from marketing → agent fills c
 
 ## Step 0: Branch
 
-Never re-skin on `template-base`. Branch per client:
+Never re-skin on `template-base`. Branch per client. Use a BARE slug (no `client/`
+prefix) — Netlify branch-deploy turns the branch name into a subdomain, so
+`ak-bricklayers` → `ak-bricklayers--site-preview-v1.netlify.app` reads clean:
 
 ```
-git checkout template-base && git checkout -b client/<business-slug>
+git checkout template-base && git checkout -b <business-slug>
 ```
 
 ## Step 1: Collect Details
@@ -37,7 +39,7 @@ Ask only for what's missing. Minimum viable set:
 ## Step 2: Edit the Four Places
 
 1. **`constants.ts`** - everything in `SITE` (name, `brandParts` 3-part wordmark - middle part renders brand-red, `heroLine1/2`, `seoHeading`, `regionLabel`, `mapEmbedUrl`, `city`, `domain`, `description`), plus `CONTACT_INFO`, `BRICK_RATES`, `FAQS`.
-2. **`constants/images.ts`** - point paths at new files dropped in `images/` (case-sensitive, leading slash). BrandMarquee logos live in `components/BrandMarquee.tsx` `BRANDS` array + `images/`.
+2. **`constants/images.ts`** - point paths at new files dropped in `public/images/` (case-sensitive, leading slash `/images/...`). BrandMarquee logos live in `components/BrandMarquee.tsx` `BRANDS` array. ⚠️ **Client image files MUST go in `public/images/`, not root `images/`.** Vite publishes `dist/` from `public/` only; root-`images/` files render in `npm run dev` but 404 on the live Netlify site. Root `images/` is legacy — always drop new assets in `public/images/`.
 3. **`index.html`** - static head: `<title>`, meta description, OG tags, LocalBusiness JSON-LD. Find-replace old business name/city.
 4. **`apps-script/lead-handler.gs`** - `NOTIFY_EMAIL` (only when actually deploying lead capture; see `apps-script/SETUP.md`). `LEAD_ENDPOINT` in constants.ts stays empty until the client's Apps Script is deployed.
 
@@ -54,6 +56,22 @@ Check in browser: hero lines, wordmark split, phone tap targets, quote calc rate
 
 Commit on the client branch with message `Reskin: <Business Name> preview`. Do not push without being asked. Do not merge to template-base - template improvements get cherry-picked back instead.
 
+## Step 5: Deploy (Netlify branch-deploy)
+
+Live host = Netlify site **site-preview-v1**, deploys from `Bronx-web/trade-demo-1`,
+production branch `main` (leave it — that's the generic template preview). Each client
+goes live as a BRANCH DEPLOY on its own subdomain, `main` untouched.
+
+1. `git push -u origin <business-slug>`
+2. Netlify → site-preview-v1 → Deploy settings → **Branches and deploy contexts** →
+   "Let me add individual branches" → add `<business-slug>` → Save.
+3. ⚠️ Adding the branch does NOT build it. Netlify only builds on the NEXT push.
+   Push a commit (empty is fine: `git commit --allow-empty -m "trigger deploy"`).
+4. Live at `<business-slug>--site-preview-v1.netlify.app` once the deploy shows
+   Published (green) in the Deploys tab.
+5. Verify images render on the LIVE url (not just dev) — see the public/images warning
+   in Step 2. Tag the shippable snapshot: `git tag -a <slug>-demo-v1 -m "ready to send"`.
+
 ## Known Leftovers (flag to user each time)
 
 - About hero, veneer/paving service pics, project #4 still hotlink external URLs - swap when client photos exist.
@@ -65,3 +83,5 @@ Commit on the client branch with message `Reskin: <Business Name> preview`. Do n
 - Editing wordmark in Navbar/Footer directly - it reads `SITE.brandParts`; edit constants.
 - Adding a sheet column for a new lead field - handler writes FIXED column order; edit `COLUMNS` + `rowFor()` in lead-handler.gs and redeploy a new version.
 - Forgetting `index.html` - React pages update but tab title/schema still say old client.
+- Dropping client images in root `images/` instead of `public/images/` - looks fine in `npm run dev`, 404s on the live Netlify deploy. Always `public/images/`.
+- Expecting a Netlify branch deploy to build the moment you enable it - it waits for the next push. Empty-commit to kick it.
