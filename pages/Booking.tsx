@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { BRICK_RATES, CONTACT_INFO, LEAD_ENDPOINT, PHONE_HREF } from '../constants';
+import { BRICK_RATES, CONTACT_INFO, LEAD_ENDPOINT, PHONE_HREF, SITE } from '../constants';
 import { ServiceType } from '../types';
 
 /**
@@ -28,6 +28,38 @@ const Booking: React.FC = () => {
   // Lead form state — posts to Google Apps Script (see LEAD_ENDPOINT in constants.ts)
   const [lead, setLead] = useState({ name: '', phone: '', email: '', suburb: '', preferredTime: 'Anytime' });
   const [sendStatus, setSendStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+  // Optional plans/docs from the client. Sent base64-encoded inside the JSON
+  // payload (keeps the request "simple", no CORS preflight); the Apps Script
+  // handler saves them to Drive. Caps keep the payload inside Apps Script limits.
+  const MAX_FILES = 3;
+  const MAX_TOTAL_BYTES = 10 * 1024 * 1024; // 10 MB combined
+  const [files, setFiles] = useState<File[]>([]);
+  const [fileError, setFileError] = useState<string>('');
+
+  const handleFilesChosen = (chosen: FileList | null) => {
+    if (!chosen) return;
+    const next = [...files, ...Array.from(chosen)].slice(0, MAX_FILES);
+    const totalBytes = next.reduce((sum, f) => sum + f.size, 0);
+    if (totalBytes > MAX_TOTAL_BYTES) {
+      setFileError('Files too big. Keep the combined size under 10 MB.');
+      return;
+    }
+    setFileError('');
+    setFiles(next);
+  };
+
+  const fileToBase64 = (file: File) =>
+    new Promise<{ name: string; type: string; data: string }>((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const result = reader.result as string;
+        // Strip the "data:<mime>;base64," prefix; Apps Script wants raw base64.
+        resolve({ name: file.name, type: file.type || 'application/octet-stream', data: result.split(',')[1] || '' });
+      };
+      reader.onerror = () => reject(reader.error);
+      reader.readAsDataURL(file);
+    });
 
   // Ref for the element to observe for scroll (e.g., the end of the quote summary)
   const quoteSummaryRef = useRef<HTMLDivElement>(null);
@@ -138,6 +170,7 @@ const Booking: React.FC = () => {
     }
     setSendStatus('sending');
     try {
+      const encodedFiles = await Promise.all(files.map(fileToBase64));
       // No custom headers — keeps this a "simple" request so the Apps Script
       // web app accepts it without a CORS preflight.
       const res = await fetch(LEAD_ENDPOINT, {
@@ -158,10 +191,12 @@ const Booking: React.FC = () => {
           gst: estimate.gst,
           total: estimate.total,
           specialInstructions,
+          files: encodedFiles,
           source: window.location.href
         })
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      setFiles([]);
       setSendStatus('success');
     } catch (err) {
       console.error('Lead submit failed:', err);
@@ -175,7 +210,7 @@ const Booking: React.FC = () => {
       <div className="bg-[#CB4154] text-white py-12 md:py-16 px-6">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-3xl md:text-6xl font-bold oswald uppercase leading-tight">Instant Quote Calculator</h1>
-          <p className="mt-2 text-lg md:text-xl font-light opacity-90">Fair pricing. Clean work. No hidden surprises.</p>
+          <p className="mt-2 text-lg md:text-xl font-light opacity-90">Fair pricing. No hidden surprises. We source the latest prices from our trusted partners to give you updated information.</p>
         </div>
       </div>
 
@@ -353,7 +388,7 @@ const Booking: React.FC = () => {
       >
         <button
           onClick={() => { setSendStatus('idle'); setIsBookingModalOpen(true); }}
-          className="w-full bg-[#CB4154] text-white py-5 px-4 shadow-[0_-4px_20px_rgba(0,0,0,0.15)] flex items-center justify-center gap-3 active:brightness-90 transition-all"
+          className="w-full bg-[#CB4154] text-white py-6 px-4 shadow-[0_-4px_20px_rgba(0,0,0,0.15)] flex items-center justify-center gap-3 active:brightness-90 transition-all"
           aria-label="Send Job Request"
         >
           <span className="oswald font-bold text-xl uppercase tracking-widest">
@@ -406,7 +441,7 @@ const Booking: React.FC = () => {
               ) : (
                 <>
                   <p className="text-sm text-gray-500 mb-6">
-                    Your quote comes with the request — <span className="font-semibold text-gray-800">{SERVICE_LABELS[serviceType]}, {area} m², {formatCurrency(estimate.total)} incl. GST</span>. Just add your details and we'll call you back.
+                    Your quote comes with the request: <span className="font-semibold text-gray-800">{SERVICE_LABELS[serviceType]}, {area} m², {formatCurrency(estimate.total)} incl. GST</span>. Just add your details and we'll call you back.
                   </p>
                   <form onSubmit={handleLeadSubmit} className="space-y-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -469,6 +504,45 @@ const Booking: React.FC = () => {
                           <option>After 5pm</option>
                         </select>
                       </div>
+                      <div className="col-span-1 sm:col-span-2">
+                        <label htmlFor="lead-files" className="block text-xs font-bold text-gray-500 uppercase mb-1.5 tracking-wider">
+                          Plans / Docs (Optional)
+                        </label>
+                        <label
+                          htmlFor="lead-files"
+                          className="flex flex-col items-center justify-center gap-1 border-2 border-dashed border-gray-300 rounded-md p-4 cursor-pointer hover:border-[#CB4154] transition-colors bg-gray-50 text-center"
+                        >
+                          <svg className="w-6 h-6 text-[#CB4154]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
+                          <span className="text-sm text-gray-600">Upload plans, drawings or consent docs</span>
+                          <span className="text-xs text-gray-400">PDF, Word or images. Up to {MAX_FILES} files, 10 MB total.</span>
+                        </label>
+                        <input
+                          id="lead-files"
+                          type="file"
+                          multiple
+                          accept=".pdf,.doc,.docx,image/*"
+                          className="sr-only"
+                          onChange={(e) => { handleFilesChosen(e.target.files); e.target.value = ''; }}
+                        />
+                        {fileError && <p className="mt-2 text-xs text-red-600 font-semibold">{fileError}</p>}
+                        {files.length > 0 && (
+                          <ul className="mt-3 space-y-2">
+                            {files.map((file, i) => (
+                              <li key={`${file.name}-${i}`} className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-md px-3 py-2 text-sm text-gray-700">
+                                <span className="truncate">{file.name} <span className="text-gray-400 text-xs">({(file.size / 1024 / 1024).toFixed(1)} MB)</span></span>
+                                <button
+                                  type="button"
+                                  onClick={() => setFiles(files.filter((_, idx) => idx !== i))}
+                                  className="text-gray-400 hover:text-red-600 font-bold px-2"
+                                  aria-label={`Remove ${file.name}`}
+                                >
+                                  ✕
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
                     </div>
 
                     {sendStatus === 'error' && (
@@ -500,7 +574,7 @@ const Booking: React.FC = () => {
       {/* Service Area Section */}
       <div className="bg-white py-16 md:py-24 border-t">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold oswald mb-8 uppercase tracking-wide">Serving the Greater Canterbury Region</h2>
+          <h2 className="text-2xl md:text-3xl font-bold oswald mb-8 uppercase tracking-wide">Serving {SITE.regionLabel}</h2>
           <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-12">
             {CONTACT_INFO.areas.map(area => (
               <span key={area} className="bg-gray-50 px-4 py-2 rounded-full text-xs md:text-sm font-semibold text-gray-600 border border-gray-200">{area}</span>
@@ -508,7 +582,7 @@ const Booking: React.FC = () => {
           </div>
           <div className="h-64 md:h-[450px] w-full rounded-xl md:rounded-3xl overflow-hidden shadow-2xl bg-gray-100 ring-4 ring-gray-50">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d27523.607555608025!2d172.66798389128635!3d-43.52188175116992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snz!4v1766292956812!5m2!1sen!2snz" 
+              src={SITE.mapEmbedUrl}
               width="100%" 
               height="100%" 
               style={{ border: 0 }} 

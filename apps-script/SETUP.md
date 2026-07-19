@@ -29,3 +29,10 @@ the client.
 - Editing the script does NOT update the live web app until you deploy a new
   version.
 - The `Leads` tab + header row are auto-created on first submission.
+- File uploads: the form can send up to 3 files (10 MB total) base64-encoded
+  in the JSON payload. The script saves them to a Drive folder called
+  `Lead Uploads` (auto-created, in the account the script executes as) and
+  writes the links to the `Files` column + notify email.
+- Because the script now touches Drive, the FIRST deploy (or first redeploy
+  after adding this) prompts for an extra Drive permission — re-authorise when
+  asked or uploads will fail while the row still writes.

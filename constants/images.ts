@@ -24,7 +24,7 @@ export const MASONRY_ASSETS = {
     about: 'https://images.pexels.com/photos/11236546/pexels-photo-11236546.jpeg', // Currently external
   },
   services: {
-    retaining: 'https://images.unsplash.com/photo-1634733988138-bf2c3a2a13fa?auto=format&fit=crop&q=80&w=800',
+    retaining: '/images/retaining-wall.png', // Local asset
     veneer: 'https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&q=80&w=800',
     paving: 'https://images.unsplash.com/photo-1621905231727-44023c382617?auto=format&fit=crop&q=80&w=800',
   },
@@ -68,8 +68,8 @@ export const MASONRY_ASSETS = {
       id: 6, 
       title: 'Retaining Solution', 
       category: 'Infrastructure', 
-      path: 'https://images.unsplash.com/photo-1634733988138-bf2c3a2a13fa?auto=format&fit=crop&q=80&w=800', // Stock — replace with client photo
-      fallback: 'https://images.unsplash.com/photo-1634733988138-bf2c3a2a13fa?auto=format&fit=crop&q=80&w=800' 
+      path: '/images/retaining-wall.png', // Local asset
+      fallback: '/images/retaining-wall.png'
     },
   ],
   misc: {

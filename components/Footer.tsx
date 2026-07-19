@@ -11,11 +11,11 @@ import { SITE, CONTACT_INFO, PHONE_HREF } from '../constants';
  */
 const Footer = forwardRef<HTMLElement>((props, ref) => {
   return (
-    <footer ref={ref} className="bg-gray-900 text-white pt-16 pb-24 md:pb-8">
+    <footer ref={ref} className="bg-gray-900 text-white pt-16 pb-20 md:pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
-            <h2 className="text-2xl font-bold oswald mb-4">HART <span className="text-[#CB4154]">STONE</span> LTD</h2>
+            <h2 className="text-2xl font-bold oswald mb-4">{SITE.brandParts[0]} <span className="text-[#CB4154]">{SITE.brandParts[1]}</span> {SITE.brandParts[2]}</h2>
             <ul className="space-y-2 text-gray-400">
               <li>
                 <a href={PHONE_HREF} className="flex items-center gap-2 hover:text-white transition-colors">
@@ -51,9 +51,8 @@ const Footer = forwardRef<HTMLElement>((props, ref) => {
             </ul>
           </div>
         </div>
-        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+        <div className="border-t border-gray-800 pt-8 text-center text-sm text-gray-500">
           <p>© {new Date().getFullYear()} {SITE.name}. All Rights Reserved | Built to NZS 3604 Standards</p>
-
         </div>
       </div>
     </footer>

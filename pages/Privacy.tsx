@@ -21,8 +21,9 @@ const Privacy: React.FC = () => {
         <section>
           <h2 className="text-xl font-bold oswald uppercase mb-3">What we collect</h2>
           <p>
-            When you send a job request through this site, we collect the details you give us —
-            your name, phone number, email, suburb and the details of the job you're asking about.
+            When you send a job request through this site, we collect the details you give us:
+            your name, phone number, email, suburb, the details of the job you're asking about,
+            and any plans or documents you choose to upload.
             That's it. No accounts, no tracking profiles.
           </p>
         </section>
@@ -49,12 +50,12 @@ const Privacy: React.FC = () => {
           <h2 className="text-xl font-bold oswald uppercase mb-3">Third-party services</h2>
           <p>
             This site uses Google Maps to show our service area. Google may set its own cookies
-            when the map loads — see Google's privacy policy for details.
+            when the map loads. See Google's privacy policy for details.
           </p>
         </section>
 
         <p className="text-sm text-gray-400 border-t pt-6">
-          {SITE.name} — {CONTACT_INFO.address}
+          {SITE.name}, {CONTACT_INFO.address}
         </p>
       </div>
     </div>

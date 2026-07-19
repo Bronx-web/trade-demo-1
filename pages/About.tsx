@@ -1,6 +1,9 @@
 
 import React from 'react';
+import { SITE } from '../constants';
 import { MASONRY_ASSETS, getAssetUrl } from '../constants/images';
+import LbpStrip from '../components/LbpStrip';
+import BrandMarquee from '../components/BrandMarquee';
 
 const About: React.FC = () => {
   return (
@@ -11,21 +14,30 @@ const About: React.FC = () => {
           className="absolute inset-0 w-full h-full object-cover opacity-40" 
           alt="Masonry tools" 
         />
-        <h1 className="relative text-5xl font-bold oswald text-white uppercase tracking-widest">My Story</h1>
+        <h1 className="relative text-3xl md:text-5xl font-bold oswald text-white uppercase tracking-widest text-center px-4">
+          {SITE.seoHeading}
+        </h1>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      {/* Brands we work with */}
+      <BrandMarquee />
+
+      {/* Intro: experience */}
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-16 pb-8 text-center">
+        <h2 className="text-3xl font-bold oswald mb-4">With a Wealth of Experience...</h2>
+        <p className="text-gray-600 leading-relaxed text-lg">
+          Operating with successful business partners for 25 years, I bring proven crafting strategies for longevity.
+          With a love for the arts, I have the eye for detail. A proficiency in new builds with heavy deadlines
+          to small builds with high detail. I have the perfect balance of design & ingenuity.
+        </p>
+      </div>
+
+      {/* LBP Trust Strip */}
+      <LbpStrip />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div className="space-y-8">
-            <div>
-              <h2 className="text-3xl font-bold oswald mb-4">With a Wealth of Experience...</h2>
-              <p className="text-gray-600 leading-relaxed text-lg">
-                Operating with successful business partners for 25 years, I bring proven crafting strategies for longevity. 
-                With a love for the arts, I have the eye for detail. A proficiency in new builds with heavy deadlines 
-                to small builds with high detail. I have the perfect balance of design & ingenuity.
-              </p>
-            </div>
-            
             <div className="bg-soft-red p-8 border-l-4 border-brick-orange rounded-r-lg">
               <h3 className="text-xl font-bold oswald mb-4 uppercase">Industry Compliance</h3>
               <p className="text-gray-800 font-semibold mb-2">Built to NZS 3604 - The NZ Timber-Framed Buildings Standard</p>
@@ -55,13 +67,13 @@ const About: React.FC = () => {
           </div>
 
           <div className="space-y-6">
-            <img 
-              src={getAssetUrl(MASONRY_ASSETS.misc.worker)} 
-              className="w-full rounded-lg shadow-2xl" 
-              alt="Professional bricklayer working" 
+            <img
+              src={getAssetUrl(MASONRY_ASSETS.misc.worker)}
+              className="w-full rounded-lg shadow-2xl"
+              alt="Professional bricklayer working"
             />
             <div className="p-6 bg-gray-50 border border-gray-100 rounded-lg text-center italic text-gray-500">
-              "Your brickwork won't just look perfect on day one. It's built to be fully compliant) for many years to come."
+              "Your brickwork won't just look perfect on day one. It's built to be fully compliant for many years to come."
             </div>
           </div>
         </div>

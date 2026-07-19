@@ -15,8 +15,28 @@ h1, h2, h3, .oswald {
 /* PER-CLIENT: brand accent utility classes (used alongside Tailwind arbitrary values) */
 .brick-orange { color: #CB4154; }
 .bg-brick-orange { background-color: #CB4154; }
-.bg-soft-red { background-color: #fceded; }
+.bg-soft-red { background-color: #fff8f8; }
 .border-brick-orange { border-color: #CB4154; }
+
+/* Infinite brand marquee (BrandMarquee.tsx). Track holds two copies of the
+   logo set; sliding -50% then looping reads as seamless scroll. */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 25s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
 
 /* Custom transition for mobile menu */
 .mobile-menu-enter {
