@@ -14,9 +14,16 @@ const About: React.FC = () => {
           className="absolute inset-0 w-full h-full object-cover opacity-40" 
           alt="Masonry tools" 
         />
-        <h1 className="relative text-3xl md:text-5xl font-bold oswald text-white uppercase tracking-widest text-center px-4">
-          {SITE.seoHeading}
-        </h1>
+        <div className="relative flex flex-col items-center gap-4 px-4">
+          <img
+            src={getAssetUrl(MASONRY_ASSETS.branding.logo)}
+            className="h-16 md:h-20 w-auto bg-white/95 rounded-lg px-5 py-3 shadow-lg"
+            alt={`${SITE.name} logo`}
+          />
+          <h1 className="text-3xl md:text-5xl font-bold oswald text-white uppercase tracking-widest text-center">
+            {SITE.seoHeading}
+          </h1>
+        </div>
       </div>
 
       {/* Brands we work with */}
