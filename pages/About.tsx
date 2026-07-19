@@ -11,7 +11,7 @@ const About: React.FC = () => {
       <div className="relative h-64 bg-gray-900 flex items-center justify-center">
         <img 
           src={getAssetUrl(MASONRY_ASSETS.hero.about)} 
-          className="absolute inset-0 w-full h-full object-cover opacity-40" 
+          className="absolute inset-0 w-full h-full object-cover opacity-60"
           alt="Masonry tools" 
         />
         <h1 className="relative text-3xl md:text-5xl font-bold oswald text-white uppercase tracking-widest text-center px-4">
