@@ -2,12 +2,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MASONRY_ASSETS, getAssetUrl } from '../constants/images';
+import FaqAccordion from '../components/FaqAccordion';
 
 const Home: React.FC = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative h-[85vh] md:h-[80vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[85vh] md:min-h-[80vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src={getAssetUrl(MASONRY_ASSETS.hero.main)} 
@@ -19,7 +20,7 @@ const Home: React.FC = () => {
             }}
           />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-white w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-24 text-white w-full">
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold oswald leading-[1.1] mb-4">
             BUILT TO LAST <br />
             <span className="bg-[#CB4154] inline-block px-3 py-1 mt-2">FROM THE HART</span>
@@ -27,7 +28,7 @@ const Home: React.FC = () => {
           <p className="mt-4 text-lg md:text-2xl font-light max-w-2xl text-gray-200">
             25+ Years Turning Bricks into Statements. Precision masonry for high-end residential and commercial builds across Canterbury.
           </p>
-          <div className="mt-10 flex flex-col sm:flex-row gap-4">
+          <div className="mt-[12.5rem] flex flex-col sm:flex-row gap-4">
             <Link to="/booking" className="inline-block bg-[#CB4154] hover:bg-[#b03848] text-white px-8 py-4 text-center rounded-sm font-bold oswald tracking-wider transition-all transform hover:scale-[1.02] active:scale-95">
               GET AN INSTANT QUOTE
             </Link>
@@ -57,7 +58,7 @@ const Home: React.FC = () => {
       <section className="py-16 md:py-24 bg-soft-red">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-12">
-            <p className="text-[#F88913] font-bold tracking-widest uppercase text-sm mb-2">Our Process</p>
+            <p className="text-[#CB4154] font-bold tracking-widest uppercase text-sm mb-2">Our Process</p>
             <h2 className="text-3xl md:text-4xl font-bold oswald text-gray-900 uppercase">How We Work</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -78,7 +79,7 @@ const Home: React.FC = () => {
                 description: 'Execution of the masonry work to NZS 3604 standards with a clean, professional finish.',
               },
             ].map((item) => (
-              <div key={item.step}>
+              <div key={item.step} className="text-center md:text-left">
                 <span className="text-5xl font-bold oswald text-black/10">{item.step}</span>
                 <h3 className="text-xl font-bold oswald mt-2 mb-3 uppercase">{item.title}</h3>
                 <p className="text-gray-600 leading-relaxed">{item.description}</p>
@@ -111,10 +112,21 @@ const Home: React.FC = () => {
              ))}
           </div>
           <div className="text-center mt-10">
-            <Link to="/projects" className="inline-block bg-[#F88913] hover:bg-[#b03848] text-white px-8 py-4 rounded-sm font-bold oswald tracking-wider transition-all transform hover:scale-[1.02] active:scale-95">
+            <Link to="/projects" className="inline-block bg-[#CB4154] hover:bg-[#b03848] text-white px-8 py-4 rounded-sm font-bold oswald tracking-wider transition-all transform hover:scale-[1.02] active:scale-95">
               VIEW FULL GALLERY
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="text-center mb-12">
+            <h2 className="text-[#CB4154] font-bold tracking-widest uppercase text-sm mb-2">FAQs</h2>
+            <h3 className="text-3xl md:text-4xl font-bold oswald text-gray-900 uppercase">Common Questions</h3>
+          </div>
+          <FaqAccordion />
         </div>
       </section>
     </div>

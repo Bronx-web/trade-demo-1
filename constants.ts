@@ -50,3 +50,27 @@ export const CONTACT_INFO = {
 
 // tel: href version of the phone number (digits and + only).
 export const PHONE_HREF = `tel:${CONTACT_INFO.phone.replace(/[^+\d]/g, '')}`;
+
+// PER-CLIENT: homepage FAQ content (rendered by components/FaqAccordion.tsx).
+export const FAQS: { question: string; answer: string }[] = [
+  {
+    question: 'How quickly can I get a quote?',
+    answer: 'Use the online quote calculator for an instant ballpark estimate. For a firm price, we visit the site to confirm access, ground conditions, and architectural details before confirming a final quote.',
+  },
+  {
+    question: 'Do you work on both residential and commercial projects?',
+    answer: 'Yes. From full-house brick veneer to structural block walls and commercial builds, all work is carried out to NZS 3604 standards.',
+  },
+  {
+    question: 'Are you a Licensed Building Practitioner?',
+    answer: 'Yes, LBP verified. All detailing is signed off as code-compliant, covering cavity size, flashings, veneer ties, and control joints.',
+  },
+  {
+    question: 'What areas do you service?',
+    answer: 'We cover the greater Canterbury region, including Christchurch, Selwyn and Waimakariri, for both new builds and heritage repoint work.',
+  },
+  {
+    question: 'What happens after I submit a booking request?',
+    answer: "We'll be in touch to confirm your site visit, then follow up with a detailed quote based on your project's specific requirements.",
+  },
+];
