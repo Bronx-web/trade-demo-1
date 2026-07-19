@@ -17,7 +17,7 @@ const FALLBACK_PROJECT = 'https://images.unsplash.com/photo-1581094794329-c8112a
 
 export const MASONRY_ASSETS = {
   branding: {
-    logo: '/images/logo.png', 
+    logo: '/images/ak-logo.png',
   },
   hero: {
     main: '/images/hero-home.jpg', // Local asset
