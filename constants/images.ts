@@ -21,7 +21,7 @@ export const MASONRY_ASSETS = {
   },
   hero: {
     main: '/images/hero-home.jpg', // Local asset
-    about: 'https://images.pexels.com/photos/11236546/pexels-photo-11236546.jpeg', // Currently external
+    about: '/images/about-hero.png', // Local asset
   },
   services: {
     retaining: '/images/retaining-wall.png', // Local asset

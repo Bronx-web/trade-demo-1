@@ -24,9 +24,11 @@ const BrandMarquee: React.FC = () => {
       <div className="marquee-track">
         {[0, 1].map((copy) => (
           <div key={copy} className="flex items-center" aria-hidden={copy === 1}>
-            {BRANDS.map((brand) => (
+            {/* BRANDS repeated so one copy overflows even wide desktops — keeps the
+                strip edge-to-edge with no mid-scroll gap. */}
+            {[...BRANDS, ...BRANDS, ...BRANDS].map((brand, i) => (
               <img
-                key={`${copy}-${brand.name}`}
+                key={`${copy}-${i}-${brand.name}`}
                 src={brand.src}
                 alt={copy === 0 ? `${brand.name} logo` : ''}
                 className="h-8 md:h-10 w-auto mx-10 md:mx-16 opacity-80"
