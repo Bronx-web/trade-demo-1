@@ -23,7 +23,7 @@ const About: React.FC = () => {
       <BrandMarquee />
 
       {/* Intro: experience */}
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-16 pb-8 text-center">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-16 pb-28 text-center">
         <h2 className="text-3xl font-bold oswald mb-4">With a Wealth of Experience...</h2>
         <p className="text-gray-600 leading-relaxed text-lg">
           Operating with successful business partners for 25 years, I bring proven crafting strategies for longevity.
