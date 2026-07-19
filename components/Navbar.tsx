@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { CONTACT_INFO, PHONE_HREF, SITE } from '../constants';
+import { MASONRY_ASSETS, getAssetUrl } from '../constants/images';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,9 +23,11 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between h-20">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center">
-              <span className="text-2xl font-bold tracking-tighter text-gray-900 oswald">
-                {SITE.brandParts[0]} <span className="text-[#CB4154]">{SITE.brandParts[1]}</span> {SITE.brandParts[2]}
-              </span>
+              <img
+                src={getAssetUrl(MASONRY_ASSETS.branding.logo)}
+                className="h-12 md:h-14 w-auto"
+                alt={`${SITE.name} logo`}
+              />
             </Link>
           </div>
           
