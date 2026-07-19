@@ -27,7 +27,7 @@ h1, h2, h3, .oswald {
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee-scroll 25s linear infinite;
+  animation: marquee-scroll 45s linear infinite;
 }
 .marquee-track:hover {
   animation-play-state: paused;
