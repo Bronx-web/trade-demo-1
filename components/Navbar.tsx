@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { CONTACT_INFO, PHONE_HREF, SITE } from '../constants';
+import { MASONRY_ASSETS, getAssetUrl } from '../constants/images';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,9 +23,14 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between h-20">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center">
-              <span className="text-2xl font-bold tracking-tighter text-gray-900 oswald">
-                {SITE.brandParts[0]} <span className="text-accent">{SITE.brandParts[1]}</span> {SITE.brandParts[2]}
-              </span>
+              {/* Logo file carries transparent padding around the circular mark,
+                  so it needs to overflow the 80px nav bar to read at a sensible
+                  size. scale-125 compensates without distorting the source. */}
+              <img
+                src={getAssetUrl(MASONRY_ASSETS.branding.logo)}
+                alt={SITE.name}
+                className="h-16 sm:h-20 w-auto scale-125 origin-left"
+              />
             </Link>
           </div>
           

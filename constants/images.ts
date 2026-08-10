@@ -25,7 +25,7 @@ export const MASONRY_ASSETS = {
   },
   hero: {
     main: '/images/work-10.jpg',
-    about: '/images/work-2.jpg',
+    about: '/images/work-1.jpg',
   },
   services: {
     residential: '/images/work-2.jpg',
