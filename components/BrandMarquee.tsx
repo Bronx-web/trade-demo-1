@@ -6,9 +6,9 @@ import React from 'react';
  * images/brands/ and list them here.
  */
 const BRANDS = [
-  { name: 'Midland Brick South Island', src: '/images/mb-brick-logo.png' },
-  { name: 'PGH Bricks & Pavers', src: '/images/Png-bricks-logo.png' },
-  { name: 'Austral Bricks', src: '/images/austural-bricks-logo.png' },
+  { name: 'Master Electricians', src: '/images/master-electricians.jpg' },
+  { name: 'SEANZ — Sustainable Energy Association New Zealand', src: '/images/seanz-logo.jpg' },
+  { name: 'Trade Partners NZ', src: '/images/trade-partners.jpg' },
 ];
 
 /**

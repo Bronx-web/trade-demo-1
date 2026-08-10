@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { BRICK_RATES, CONTACT_INFO, LEAD_ENDPOINT, PHONE_HREF, SITE } from '../constants';
+import { SERVICE_RATES, CONTACT_INFO, LEAD_ENDPOINT, PHONE_HREF, SITE } from '../constants';
 import { ServiceType } from '../types';
 
 /**
@@ -11,7 +11,7 @@ import { ServiceType } from '../types';
  * It uses the 'labour' spelling to align with AU/NZ English standards.
  */
 const Booking: React.FC = () => {
-  const [serviceType, setServiceType] = useState<ServiceType>(ServiceType.BRICK);
+  const [serviceType, setServiceType] = useState<ServiceType>(ServiceType.RESIDENTIAL);
   const [area, setArea] = useState<number>(0);
   const [complexity, setComplexity] = useState<number>(1.0);
   const [includeMaterials, setIncludeMaterials] = useState<boolean>(true);
@@ -75,13 +75,13 @@ const Booking: React.FC = () => {
 
   // Function to calculate the estimate
   const calculateEstimate = useCallback(() => {
-    const labourRate = BRICK_RATES.labour[serviceType];
-    const materialRate = BRICK_RATES.materials[serviceType];
+    const labourRate = SERVICE_RATES.labour[serviceType];
+    const materialRate = SERVICE_RATES.materials[serviceType];
 
     const totalLabour = (labourRate * area) * complexity;
     const totalMaterials = includeMaterials ? (materialRate * area) : 0;
     const subtotal = totalLabour + totalMaterials;
-    const gst = subtotal * BRICK_RATES.taxRate;
+    const gst = subtotal * SERVICE_RATES.taxRate;
     const total = subtotal + gst;
 
     setEstimate({
@@ -148,10 +148,10 @@ const Booking: React.FC = () => {
   const isCalculateButtonEnabled = area > 0;
 
   const SERVICE_LABELS: Record<ServiceType, string> = {
-    [ServiceType.BRICK]: 'Bricklaying (Standard)',
-    [ServiceType.BLOCK]: 'Blocklaying (Standard)',
-    [ServiceType.VENEER]: 'Brick Veneer',
-    [ServiceType.RETAINING]: 'Block Retaining Wall'
+    [ServiceType.RESIDENTIAL]: 'Residential Electrical',
+    [ServiceType.COMMERCIAL]: 'Commercial & Industrial',
+    [ServiceType.NETWORKING]: 'Data & Fibre Networking',
+    [ServiceType.SOLAR]: 'Solar (On/Off Grid)'
   };
 
   const complexityLabel =
@@ -233,10 +233,10 @@ const Booking: React.FC = () => {
                   onChange={(e) => setServiceType(e.target.value as ServiceType)}
                   className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-[#CB4154] outline-none text-sm md:text-base appearance-none"
                 >
-                  <option value={ServiceType.BRICK}>Bricklaying (Standard)</option>
-                  <option value={ServiceType.BLOCK}>Blocklaying (Standard)</option>
-                  <option value={ServiceType.VENEER}>Brick Veneer</option>
-                  <option value={ServiceType.RETAINING}>Block Retaining Wall</option>
+                  <option value={ServiceType.RESIDENTIAL}>Residential Electrical</option>
+                  <option value={ServiceType.COMMERCIAL}>Commercial &amp; Industrial</option>
+                  <option value={ServiceType.NETWORKING}>Data &amp; Fibre Networking</option>
+                  <option value={ServiceType.SOLAR}>Solar (On/Off Grid)</option>
                 </select>
               </div>
               
@@ -367,7 +367,7 @@ const Booking: React.FC = () => {
                 </div>
                 <div className="flex items-start gap-2 text-xs text-gray-400 italic leading-tight">
                   <span className="text-[#CB4154] font-bold mt-0.5">*</span>
-                  <p>All work carries a 10-year craftsmanship guarantee and is compliant with NZS 3604.</p>
+                  <p>All work is carried out to AS/NZS 3000 and certified on completion.</p>
                 </div>
                 <div className="flex items-start gap-2 text-xs text-gray-400 italic leading-tight">
                   <span className="text-[#CB4154] font-bold mt-0.5">*</span>

@@ -1,9 +1,9 @@
 
 export enum ServiceType {
-  BRICK = 'brick',
-  BLOCK = 'block',
-  VENEER = 'veneer',
-  RETAINING = 'retaining'
+  RESIDENTIAL = 'residential',
+  COMMERCIAL = 'commercial',
+  NETWORKING = 'networking',
+  SOLAR = 'solar'
 }
 
 export interface QuoteRates {

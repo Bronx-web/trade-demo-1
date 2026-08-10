@@ -3,16 +3,16 @@ import React from 'react';
 
 const CREDENTIALS = [
   {
-    title: 'LBP Licensed',
-    detail: 'Licensed Building Practitioner. All work signed off as code-compliant.',
+    title: 'Master Electricians',
+    detail: 'Members of Master Electricians, plus SEANZ and Trade Partners NZ.',
   },
   {
-    title: 'Built to NZS 3604',
-    detail: 'Cavity size, flashings, veneer ties and control joints done to standard.',
+    title: 'Certified to AS/NZS 3000',
+    detail: 'Every job carried out to the Wiring Rules and certified on completion.',
   },
   {
-    title: 'Master Practitioner',
-    detail: '25 years of residential and commercial brick & blockwork.',
+    title: '5.0 from 23 Google reviews',
+    detail: 'Locally owned and operated in Hamilton since 2021.',
   },
 ];
 
@@ -20,7 +20,7 @@ const CREDENTIALS = [
  * LbpStrip
  *
  * Trust strip shown directly after the hero on Home and About.
- * Pairs the retaining wall showcase photo with LBP / NZS 3604 credentials.
+ * Pairs the accreditation logo with the client's registration credentials.
  */
 const LbpStrip: React.FC = () => {
   return (
@@ -28,10 +28,13 @@ const LbpStrip: React.FC = () => {
       <div className="max-w-4xl mx-auto px-6 sm:px-8 py-6 md:py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
           <div className="-mx-6 sm:-mx-8 md:mx-0">
+            {/* TODO: swap for a Master Electricians / SEANZ badge once the client
+                confirms we can use their association marks. Their own logo stands
+                in for now. */}
             <img
-              src="/images/lbp-logo.webp"
-              alt="Licensed Building Practitioners. Building confidence"
-              className="w-full md:max-w-sm md:mx-auto"
+              src="/images/ep-logo.png"
+              alt="Electrical Potential Ltd"
+              className="w-full max-w-[220px] md:max-w-xs mx-auto"
             />
           </div>
           <ul className="space-y-3">

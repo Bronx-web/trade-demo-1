@@ -11,23 +11,25 @@ import { QuoteRates } from './types';
 // Business identity — shown in nav, footer, schema and page titles.
 // THE per-client swap file: change everything here + constants/images.ts, done.
 export const SITE = {
-  name: 'Hart Stone',
+  name: 'Electrical Potential',
   // Wordmark in navbar/footer: middle part renders in the brand accent colour.
-  brandParts: ['HART', 'STONE', 'LTD'] as [string, string, string],
-  tagline: 'Brick & Block',
-  city: 'Christchurch',
+  brandParts: ['ELECTRICAL', 'POTENTIAL', 'LTD'] as [string, string, string],
+  tagline: 'Local spark, Professional finish',
+  city: 'Hamilton',
   // Booking page: "Serving ..." heading
-  regionLabel: 'the Greater Canterbury Region',
-  // Home hero: line 1 plain, line 2 in the red box
-  heroLine1: 'BRICK & BLOCK CHRISTCHURCH',
-  heroLine2: 'BUILT TO LAST',
+  regionLabel: 'Hamilton & the Waikato',
+  // Home hero: line 1 plain, line 2 in the accent box
+  heroLine1: 'ELECTRICIANS HAMILTON & WAIKATO',
+  heroLine2: 'LOCAL SPARK, PROFESSIONAL FINISH',
   // About hero H1 — keep trade + location keywords for SEO
-  seoHeading: 'Licensed Brick & Block Layers Christchurch',
+  seoHeading: 'Registered Electricians Hamilton & Waikato',
   // Google Maps embed for the service-area section (Share → Embed a map → src URL)
-  mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d27523.607555608025!2d172.66798389128635!3d-43.52188175116992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snz!4v1766292956812!5m2!1sen!2snz',
+  // TODO: Hamilton-centred embed. Replace with a Chartwell/Hamilton pin from
+  // Google Maps → Share → Embed a map before sending to the client.
+  mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d51458.90405988676!2d175.2280!3d-37.7870!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snz!4v1766292956812!5m2!1sen!2snz',
   // Canonical domain for the live site — no trailing slash, non-www.
-  domain: 'https://site-preview-v1.netlify.app',
-  description: 'Licensed brick and block layers serving the greater Canterbury region. Instant online quotes, quality masonry built to NZS 3604.',
+  domain: 'https://electrical-potential--site-preview-v1.netlify.app',
+  description: 'Registered electricians serving Hamilton and the Waikato. Residential, commercial and networking. Master Electricians, 5.0 stars from 23 Google reviews.',
 };
 
 /**
@@ -38,27 +40,37 @@ export const SITE = {
  */
 export const LEAD_ENDPOINT = '';
 
-export const BRICK_RATES: QuoteRates = {
+/**
+ * ⚠️ PLACEHOLDER RATES — NOT SUPPLIED BY THE CLIENT.
+ *
+ * Electrical Potential publishes no pricing on their site or Google listing.
+ * These are indicative hourly labour rates with a materials allowance, used only
+ * so the estimator renders. Confirm real rates with Lachlan before this goes to
+ * the client, or replace the estimator with the triage form (planned) so the site
+ * never quotes a number it cannot stand behind.
+ */
+export const SERVICE_RATES: QuoteRates = {
   labour: {
-    brick: 90,
-    block: 100,
-    veneer: 95,
-    retaining: 120
+    residential: 95,
+    commercial: 110,
+    networking: 105,
+    solar: 120
   },
   materials: {
-    brick: 80,
-    block: 90,
-    veneer: 85,
-    retaining: 110
+    residential: 60,
+    commercial: 75,
+    networking: 70,
+    solar: 90
   },
   taxRate: 0.15
 };
 
 export const CONTACT_INFO = {
-  email: 'info@hartstone.co.nz',
-  phone: '021-XXX-XXXX',
-  address: 'Christchurch, NZ',
-  areas: ['Christchurch City', 'Selwyn District', 'Waimakariri', 'Rolleston', 'Rangiora', 'Kaiapoi', 'Lincoln', 'Brighton']
+  // TODO: email not published on their site or Google listing — confirm with Lachlan.
+  email: 'info@electricalpotential.co.nz',
+  phone: '027 576 5422',
+  address: '37 Comries Road, Chartwell, Hamilton 3210',
+  areas: ['Hamilton', 'Chartwell', 'Rototuna', 'Flagstaff', 'Cambridge', 'Te Awamutu', 'Ngaruawahia', 'Morrinsville']
 };
 
 // tel: href version of the phone number (digits and + only).
@@ -67,23 +79,23 @@ export const PHONE_HREF = `tel:${CONTACT_INFO.phone.replace(/[^+\d]/g, '')}`;
 // PER-CLIENT: homepage FAQ content (rendered by components/FaqAccordion.tsx).
 export const FAQS: { question: string; answer: string }[] = [
   {
-    question: 'How quickly can I get a quote?',
-    answer: 'Use the online quote calculator for an instant ballpark estimate. For a firm price, we visit the site to confirm access, ground conditions, and architectural details before confirming a final quote.',
+    question: 'Do you charge a callout fee?',
+    answer: 'Get in touch and we will be upfront about callout and hourly rates before we book anything in. No surprises on the invoice.',
   },
   {
-    question: 'Do you work on both residential and commercial projects?',
-    answer: 'Yes. From full-house brick veneer to structural block walls and commercial builds, all work is carried out to NZS 3604 standards.',
+    question: 'Are you registered electricians?',
+    answer: 'Yes. We are Master Electricians members and registered with SEANZ and Trade Partners NZ. All work is carried out to AS/NZS 3000 and certified on completion.',
   },
   {
-    question: 'Are you a Licensed Building Practitioner?',
-    answer: 'Yes, LBP verified. All detailing is signed off as code-compliant, covering cavity size, flashings, veneer ties, and control joints.',
+    question: 'What kind of electrical work do you take on?',
+    answer: 'Residential, commercial and industrial, plus data and fibre networking. Everything from new powerpoints, lights and switchboard upgrades to full new-build wiring, oven and hob installs, faults and maintenance.',
   },
   {
-    question: 'What areas do you service?',
-    answer: 'We cover the greater Canterbury region, including Christchurch, Selwyn and Waimakariri, for both new builds and heritage repoint work.',
+    question: 'What areas do you cover?',
+    answer: 'Hamilton and the wider Waikato, including Chartwell, Rototuna, Flagstaff, Cambridge, Te Awamutu, Ngaruawahia and Morrinsville.',
   },
   {
-    question: 'What happens after I submit a booking request?',
-    answer: "We'll be in touch to confirm your site visit, then follow up with a detailed quote based on your project's specific requirements.",
+    question: 'What happens after I send a job request?',
+    answer: 'We will be in touch to confirm the details, book a time that suits, and give you a clear price before any work starts.',
   },
 ];
