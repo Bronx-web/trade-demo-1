@@ -7,7 +7,14 @@ description: Use when re-skinning the trade-demo-1 template for a new client or 
 
 ## Overview
 
-trade-demo-1 is a re-skinnable trade-site template (React 19 + Vite + Tailwind, BrowserRouter). Baseline commit `ae025f4` on `template-base`. A re-skin touches ONLY the four places below - no component edits.
+trade-demo-1 is a re-skinnable trade-site template (React 19 + Vite + Tailwind, BrowserRouter). The baseline is whatever `template-base` currently points at — always branch from it rather than a commit hash. A re-skin touches ONLY the four places below - no component edits.
+
+⚠️ Template improvements must land ON `template-base`. The baseline work (`6e502db`,
+`7faa083`, `ae025f4`, `b1adae9`) was originally done on the `ak-bricklayers` client
+branch and left there, so `template-base` sat without the `SITE` config, the real
+Tailwind build, or this skill — and a reskin branched from it could not follow Step 2
+at all. Fixed 10 Aug 2026. When you improve the template while on a client branch,
+cherry-pick it back to `template-base` before starting the next client.
 
 Workflow: user supplies client details gathered from marketing → agent fills config → user reviews preview and does taste tweaks.
 
