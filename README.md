@@ -1,20 +1,25 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Hart Template
 
-# Run and deploy your AI Studio app
+Base template for trade business mockups. Originally built for Hart Stone Ltd (brick and block, Canterbury NZ). Being refactored into a reusable template for lawn mowing, property maintenance, plumbing, electrical, and vehicle service station mockups.
 
-This contains everything you need to run your app locally.
+## Current stack
+To confirm once files are loaded into this folder: HTML/CSS/JS static build, or React.
 
-View your app in AI Studio: https://ai.studio/apps/55113c6a-999b-4255-bbc6-1780e7ae4da5
+## Pages
+- Home (hero, craftsmanship/trust section, image gallery, footer)
+- About (My Story: bio, industry compliance callout, photo)
+- Projects
+- Quote & Booking (instant quote calculator, service area map)
 
-## Run Locally
+## Running locally
+Fill in once stack is confirmed:
+```
+npm install
+npm run dev
+```
 
-**Prerequisites:**  Node.js
+## Deployment
+Currently on Netlify. Migration to Vercel planned.
 
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Status
+Refactor in progress. See REFACTOR_CHECKLIST.md for what's done and what's left.
