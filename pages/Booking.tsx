@@ -207,7 +207,7 @@ const Booking: React.FC = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Header Banner */}
-      <div className="bg-[#CB4154] text-white py-12 md:py-16 px-6">
+      <div className="bg-accent text-accent-ink py-12 md:py-16 px-6">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-3xl md:text-6xl font-bold oswald uppercase leading-tight">Instant Quote Calculator</h1>
           <p className="mt-2 text-lg md:text-xl font-light opacity-90">Fair pricing. No hidden surprises. We source the latest prices from our trusted partners to give you updated information.</p>
@@ -219,9 +219,9 @@ const Booking: React.FC = () => {
         <div className="flex flex-col gap-6 md:gap-8">
           
           {/* 1. Project Details Section */}
-          <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg border-t-4 border-[#CB4154]">
+          <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg border-t-4 border-accent">
             <h2 className="text-xl md:text-2xl font-bold oswald mb-6 flex items-center gap-3 uppercase">
-              <svg className="w-5 h-5 md:w-6 md:h-6 text-[#CB4154]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+              <svg className="w-5 h-5 md:w-6 md:h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
               Project Details
             </h2>
             
@@ -231,7 +231,7 @@ const Booking: React.FC = () => {
                 <select 
                   value={serviceType}
                   onChange={(e) => setServiceType(e.target.value as ServiceType)}
-                  className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-[#CB4154] outline-none text-sm md:text-base appearance-none"
+                  className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-accent outline-none text-sm md:text-base appearance-none"
                 >
                   <option value={ServiceType.RESIDENTIAL}>Residential Electrical</option>
                   <option value={ServiceType.COMMERCIAL}>Commercial &amp; Industrial</option>
@@ -245,7 +245,7 @@ const Booking: React.FC = () => {
                 <input 
                   type="number" 
                   placeholder="e.g. 50" 
-                  className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-[#CB4154] outline-none text-sm md:text-base"
+                  className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-accent outline-none text-sm md:text-base"
                   value={area === 0 ? '' : area}
                   onChange={(e) => setArea(Number(e.target.value))}
                 />
@@ -256,7 +256,7 @@ const Booking: React.FC = () => {
                 <select 
                   value={complexity}
                   onChange={(e) => setComplexity(Number(e.target.value))}
-                  className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-[#CB4154] outline-none text-sm md:text-base appearance-none"
+                  className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-accent outline-none text-sm md:text-base appearance-none"
                 >
                   <option value={1.0}>Standard (Flat, Easy Access)</option>
                   <option value={1.2}>Moderate (Sloped, Corners)</option>
@@ -270,7 +270,7 @@ const Booking: React.FC = () => {
                   id="materials"
                   checked={includeMaterials}
                   onChange={(e) => setIncludeMaterials(e.target.checked)}
-                  className="w-5 h-5 accent-[#CB4154] cursor-pointer"
+                  className="w-5 h-5 accent-accent cursor-pointer"
                 />
                 <label htmlFor="materials" className="text-sm font-semibold text-gray-700 cursor-pointer">Include Materials</label>
               </div>
@@ -280,7 +280,7 @@ const Booking: React.FC = () => {
                 <label className="block text-xs font-bold text-gray-500 uppercase mb-1.5 tracking-wider">Special Instructions</label>
                 <textarea 
                   rows={3}
-                  className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-[#CB4154] outline-none text-sm md:text-base"
+                  className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-accent outline-none text-sm md:text-base"
                   placeholder="e.g., specific site access details..."
                   value={specialInstructions}
                   onChange={(e) => setSpecialInstructions(e.target.value)}
@@ -296,7 +296,7 @@ const Booking: React.FC = () => {
               disabled={!isCalculateButtonEnabled || isCalculating}
               className={`flex items-center gap-3 px-8 py-4 rounded-md font-bold oswald text-xl uppercase tracking-widest transition-all duration-300
                 ${isCalculateButtonEnabled && !isCalculating 
-                  ? 'bg-[#CB4154] text-white hover:bg-[#b03848] active:scale-95 shadow-md' 
+                  ? 'bg-accent text-accent-ink hover:bg-accent-dark active:scale-95 shadow-md' 
                   : 'bg-gray-200 text-gray-500 cursor-not-allowed'
                 }`}
             >
@@ -326,9 +326,9 @@ const Booking: React.FC = () => {
 
           {/* 2. Estimation Summary Section - Observing this element for button visibility */}
           {showSummary && (
-            <div ref={quoteSummaryRef} className="bg-white p-6 md:p-8 rounded-lg shadow-xl border-t-8 border-[#CB4154] animate-in fade-in duration-500">
+            <div ref={quoteSummaryRef} className="bg-white p-6 md:p-8 rounded-lg shadow-xl border-t-8 border-accent animate-in fade-in duration-500">
               <h3 className="text-xl md:text-2xl font-bold oswald mb-6 border-b pb-4 flex items-center gap-2 uppercase">
-                <svg className="w-5 h-5 md:w-6 md:h-6 text-[#CB4154]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <svg className="w-5 h-5 md:w-6 md:h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 Quote Summary
               </h3>
               
@@ -354,23 +354,23 @@ const Booking: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-col justify-center items-center bg-[#CB4154]/5 p-6 rounded-lg border border-[#CB4154]/10">
-                  <p className="text-[10px] md:text-xs font-bold text-[#CB4154] uppercase tracking-widest mb-1">Total Estimate</p>
-                  <p className="text-4xl md:text-5xl font-bold text-[#CB4154] oswald">{formatCurrency(estimate.total)}</p>
+                <div className="flex flex-col justify-center items-center bg-accent/5 p-6 rounded-lg border border-accent/10">
+                  <p className="text-[10px] md:text-xs font-bold text-accent uppercase tracking-widest mb-1">Total Estimate</p>
+                  <p className="text-4xl md:text-5xl font-bold text-accent oswald">{formatCurrency(estimate.total)}</p>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex items-start gap-2 text-xs text-gray-400 italic leading-tight">
-                  <span className="text-[#CB4154] font-bold mt-0.5">*</span>
+                  <span className="text-accent font-bold mt-0.5">*</span>
                   <p>Estimated m² rates for labour and materials. Final fixed price issued after site inspection.</p>
                 </div>
                 <div className="flex items-start gap-2 text-xs text-gray-400 italic leading-tight">
-                  <span className="text-[#CB4154] font-bold mt-0.5">*</span>
+                  <span className="text-accent font-bold mt-0.5">*</span>
                   <p>All work is carried out to AS/NZS 3000 and certified on completion.</p>
                 </div>
                 <div className="flex items-start gap-2 text-xs text-gray-400 italic leading-tight">
-                  <span className="text-[#CB4154] font-bold mt-0.5">*</span>
+                  <span className="text-accent font-bold mt-0.5">*</span>
                   <p>Happy with quote book a call to finalise details.</p>
                 </div>
               </div>
@@ -388,7 +388,7 @@ const Booking: React.FC = () => {
       >
         <button
           onClick={() => { setSendStatus('idle'); setIsBookingModalOpen(true); }}
-          className="w-full bg-[#CB4154] text-white py-6 px-4 shadow-[0_-4px_20px_rgba(0,0,0,0.15)] flex items-center justify-center gap-3 active:brightness-90 transition-all"
+          className="w-full bg-accent text-accent-ink py-6 px-4 shadow-[0_-4px_20px_rgba(0,0,0,0.15)] flex items-center justify-center gap-3 active:brightness-90 transition-all"
           aria-label="Send Job Request"
         >
           <span className="oswald font-bold text-xl uppercase tracking-widest">
@@ -433,7 +433,7 @@ const Booking: React.FC = () => {
                   <p className="text-gray-600 mb-6">Your quote and details are in. We'll call you back to lock in a time.</p>
                   <button
                     onClick={() => setIsBookingModalOpen(false)}
-                    className="bg-[#CB4154] text-white px-8 py-3 rounded-md font-bold oswald uppercase tracking-widest"
+                    className="bg-accent text-accent-ink px-8 py-3 rounded-md font-bold oswald uppercase tracking-widest"
                   >
                     Done
                   </button>
@@ -452,7 +452,7 @@ const Booking: React.FC = () => {
                           type="text"
                           required
                           autoComplete="name"
-                          className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-[#CB4154] outline-none text-sm md:text-base"
+                          className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-accent outline-none text-sm md:text-base"
                           value={lead.name}
                           onChange={(e) => setLead({ ...lead, name: e.target.value })}
                         />
@@ -464,7 +464,7 @@ const Booking: React.FC = () => {
                           type="tel"
                           required
                           autoComplete="tel"
-                          className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-[#CB4154] outline-none text-sm md:text-base"
+                          className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-accent outline-none text-sm md:text-base"
                           value={lead.phone}
                           onChange={(e) => setLead({ ...lead, phone: e.target.value })}
                         />
@@ -475,7 +475,7 @@ const Booking: React.FC = () => {
                           id="lead-email"
                           type="email"
                           autoComplete="email"
-                          className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-[#CB4154] outline-none text-sm md:text-base"
+                          className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-accent outline-none text-sm md:text-base"
                           value={lead.email}
                           onChange={(e) => setLead({ ...lead, email: e.target.value })}
                         />
@@ -485,7 +485,7 @@ const Booking: React.FC = () => {
                         <input
                           id="lead-suburb"
                           type="text"
-                          className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-[#CB4154] outline-none text-sm md:text-base"
+                          className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-accent outline-none text-sm md:text-base"
                           value={lead.suburb}
                           onChange={(e) => setLead({ ...lead, suburb: e.target.value })}
                         />
@@ -494,7 +494,7 @@ const Booking: React.FC = () => {
                         <label htmlFor="lead-time" className="block text-xs font-bold text-gray-500 uppercase mb-1.5 tracking-wider">Best Time To Call</label>
                         <select
                           id="lead-time"
-                          className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-[#CB4154] outline-none text-sm md:text-base appearance-none"
+                          className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 focus:ring-2 focus:ring-accent outline-none text-sm md:text-base appearance-none"
                           value={lead.preferredTime}
                           onChange={(e) => setLead({ ...lead, preferredTime: e.target.value })}
                         >
@@ -510,9 +510,9 @@ const Booking: React.FC = () => {
                         </label>
                         <label
                           htmlFor="lead-files"
-                          className="flex flex-col items-center justify-center gap-1 border-2 border-dashed border-gray-300 rounded-md p-4 cursor-pointer hover:border-[#CB4154] transition-colors bg-gray-50 text-center"
+                          className="flex flex-col items-center justify-center gap-1 border-2 border-dashed border-gray-300 rounded-md p-4 cursor-pointer hover:border-accent transition-colors bg-gray-50 text-center"
                         >
-                          <svg className="w-6 h-6 text-[#CB4154]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
+                          <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
                           <span className="text-sm text-gray-600">Upload plans, drawings or consent docs</span>
                           <span className="text-xs text-gray-400">PDF, Word or images. Up to {MAX_FILES} files, 10 MB total.</span>
                         </label>
@@ -558,7 +558,7 @@ const Booking: React.FC = () => {
                       className={`w-full py-4 rounded-md font-bold oswald text-lg uppercase tracking-widest transition-all
                         ${sendStatus === 'sending'
                           ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
-                          : 'bg-[#CB4154] text-white hover:bg-[#b03848] active:scale-[0.99]'
+                          : 'bg-accent text-accent-ink hover:bg-accent-dark active:scale-[0.99]'
                         }`}
                     >
                       {sendStatus === 'sending' ? 'Sending…' : 'Send Job Request'}

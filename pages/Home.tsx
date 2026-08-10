@@ -26,13 +26,13 @@ const Home: React.FC = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-24 text-white w-full">
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold oswald leading-[1.1] mb-4">
             {SITE.heroLine1} <br />
-            <span className="bg-[#CB4154] inline-block px-3 py-1 mt-2">{SITE.heroLine2}</span>
+            <span className="bg-accent text-accent-ink inline-block px-3 py-1 mt-2">{SITE.heroLine2}</span>
           </h1>
           <p className="mt-4 text-lg md:text-2xl font-light max-w-2xl text-gray-200">
             Residential, commercial and industrial electrical across {SITE.regionLabel}.
           </p>
           <div className="mt-[12.5rem] flex flex-col sm:flex-row gap-4">
-            <Link to="/booking" className="inline-block bg-[#CB4154] hover:bg-[#b03848] text-white px-8 py-4 text-center rounded-sm font-bold oswald tracking-wider transition-all transform hover:scale-[1.02] active:scale-95">
+            <Link to="/booking" className="inline-block bg-accent hover:bg-accent-dark text-accent-ink px-8 py-4 text-center rounded-sm font-bold oswald tracking-wider transition-all transform hover:scale-[1.02] active:scale-95">
               REQUEST A JOB
             </Link>
             <Link to="/projects" className="inline-block bg-white hover:bg-gray-100 text-gray-900 px-8 py-4 text-center rounded-sm font-bold oswald tracking-wider transition-all transform hover:scale-[1.02] active:scale-95">
@@ -62,10 +62,10 @@ const Home: React.FC = () => {
       <LbpStrip />
 
       {/* How We Work */}
-      <section className="py-16 md:py-24 bg-soft-red">
+      <section className="py-16 md:py-24 bg-accent-soft">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-12">
-            <p className="text-[#CB4154] font-bold tracking-widest uppercase text-sm mb-2">Our Process</p>
+            <p className="text-accent font-bold tracking-widest uppercase text-sm mb-2">Our Process</p>
             <h2 className="text-3xl md:text-4xl font-bold oswald text-gray-900 uppercase">How We Work</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -119,7 +119,7 @@ const Home: React.FC = () => {
              ))}
           </div>
           <div className="text-center mt-10">
-            <Link to="/projects" className="inline-block bg-[#CB4154] hover:bg-[#b03848] text-white px-8 py-4 rounded-sm font-bold oswald tracking-wider transition-all transform hover:scale-[1.02] active:scale-95">
+            <Link to="/projects" className="inline-block bg-accent hover:bg-accent-dark text-accent-ink px-8 py-4 rounded-sm font-bold oswald tracking-wider transition-all transform hover:scale-[1.02] active:scale-95">
               VIEW FULL GALLERY
             </Link>
           </div>
@@ -130,7 +130,7 @@ const Home: React.FC = () => {
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-12">
-            <h2 className="text-[#CB4154] font-bold tracking-widest uppercase text-sm mb-2">FAQs</h2>
+            <h2 className="text-accent font-bold tracking-widest uppercase text-sm mb-2">FAQs</h2>
             <h3 className="text-3xl md:text-4xl font-bold oswald text-gray-900 uppercase">Common Questions</h3>
           </div>
           <FaqAccordion />

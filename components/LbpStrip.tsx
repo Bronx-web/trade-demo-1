@@ -40,7 +40,7 @@ const LbpStrip: React.FC = () => {
           <ul className="space-y-3">
             {CREDENTIALS.map((item) => (
               <li key={item.title} className="flex items-start gap-3">
-                <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-[#CB4154] text-white flex items-center justify-center text-[10px] font-bold">
+                <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-accent text-accent-ink flex items-center justify-center text-[10px] font-bold">
                   ✓
                 </span>
                 <div>

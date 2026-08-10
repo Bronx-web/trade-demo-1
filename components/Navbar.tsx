@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center">
               <span className="text-2xl font-bold tracking-tighter text-gray-900 oswald">
-                {SITE.brandParts[0]} <span className="text-[#CB4154]">{SITE.brandParts[1]}</span> {SITE.brandParts[2]}
+                {SITE.brandParts[0]} <span className="text-accent">{SITE.brandParts[1]}</span> {SITE.brandParts[2]}
               </span>
             </Link>
           </div>
@@ -35,8 +35,8 @@ const Navbar: React.FC = () => {
                 to={link.path}
                 className={`text-sm font-semibold tracking-wide uppercase transition-colors duration-200 ${
                   isActive(link.path) 
-                    ? 'text-[#CB4154] border-b-2 border-[#CB4154]' 
-                    : 'text-gray-600 hover:text-[#CB4154]'
+                    ? 'text-accent border-b-2 border-accent' 
+                    : 'text-gray-600 hover:text-accent'
                 }`}
               >
                 {link.name}
@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
             ))}
             <a
               href={PHONE_HREF}
-              className="flex items-center gap-2 bg-[#CB4154] text-white px-4 py-2 rounded-md text-sm font-bold oswald uppercase tracking-wider hover:bg-[#b03848] transition-colors"
+              className="flex items-center gap-2 bg-accent text-accent-ink px-4 py-2 rounded-md text-sm font-bold oswald uppercase tracking-wider hover:bg-accent-dark transition-colors"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
               {CONTACT_INFO.phone}
@@ -86,8 +86,8 @@ const Navbar: React.FC = () => {
                 onClick={() => setIsOpen(false)}
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive(link.path) 
-                    ? 'text-[#CB4154] bg-red-50' 
-                    : 'text-gray-600 hover:text-[#CB4154] hover:bg-gray-50'
+                    ? 'text-accent bg-red-50' 
+                    : 'text-gray-600 hover:text-accent hover:bg-gray-50'
                 }`}
               >
                 {link.name}

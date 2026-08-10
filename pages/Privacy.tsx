@@ -11,7 +11,7 @@ import { SITE, CONTACT_INFO } from '../constants';
 const Privacy: React.FC = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
-      <div className="bg-[#CB4154] text-white py-12 px-6">
+      <div className="bg-accent text-accent-ink py-12 px-6">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-3xl md:text-5xl font-bold oswald uppercase leading-tight">Privacy Policy</h1>
         </div>
@@ -41,7 +41,7 @@ const Privacy: React.FC = () => {
           <p>
             Under the Privacy Act 2020 you can ask to see the information we hold about you, or ask
             us to correct or delete it. Email{' '}
-            <a href={`mailto:${CONTACT_INFO.email}`} className="text-[#CB4154] font-semibold underline">{CONTACT_INFO.email}</a>{' '}
+            <a href={`mailto:${CONTACT_INFO.email}`} className="text-accent font-semibold underline">{CONTACT_INFO.email}</a>{' '}
             and we'll sort it.
           </p>
         </section>

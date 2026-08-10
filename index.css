@@ -12,11 +12,31 @@ h1, h2, h3, .oswald {
   font-family: 'Oswald', sans-serif;
 }
 
-/* PER-CLIENT: brand accent utility classes (used alongside Tailwind arbitrary values) */
-.brick-orange { color: #CB4154; }
-.bg-brick-orange { background-color: #CB4154; }
-.bg-soft-red { background-color: #fff8f8; }
-.border-brick-orange { border-color: #CB4154; }
+/**
+ * PER-CLIENT BRAND COLOURS — change these four values and the whole site follows.
+ *
+ * --accent      main brand colour: buttons, links, active nav, wordmark
+ * --accent-dark hover state, ~10% darker
+ * --accent-soft near-white wash for tinted section backgrounds
+ * --accent-ink  text colour that sits ON --accent. Use near-black for light
+ *               accents (gold, yellow, lime) and white for dark ones (red,
+ *               navy, forest) — otherwise buttons fail contrast.
+ *
+ * Current: Electrical Potential Ltd — black + gold, from their logo and website.
+ */
+:root {
+  --accent: #C8A032;
+  --accent-dark: #A8842A;
+  --accent-soft: #fdfaf2;
+  --accent-ink: #1a1a1a;
+}
+
+/* Legacy helper classes — kept so existing markup keeps working; they now read
+   the vars above rather than hardcoding a hex. */
+.brick-orange { color: var(--accent); }
+.bg-brick-orange { background-color: var(--accent); }
+.bg-soft-red { background-color: var(--accent-soft); }
+.border-brick-orange { border-color: var(--accent); }
 
 /* Infinite brand marquee (BrandMarquee.tsx). Track holds two copies of the
    logo set; sliding -50% then looping reads as seamless scroll. */

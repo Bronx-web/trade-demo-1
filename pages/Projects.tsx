@@ -27,7 +27,7 @@ const Projects: React.FC = () => {
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6 translate-y-4 group-hover:translate-y-0 transition-transform">
-                <span className="text-xs font-bold text-[#CB4154] uppercase tracking-widest mb-1">{project.category}</span>
+                <span className="text-xs font-bold text-accent uppercase tracking-widest mb-1">{project.category}</span>
                 <h3 className="text-xl font-bold text-white oswald uppercase">{project.title}</h3>
               </div>
             </div>
@@ -37,7 +37,7 @@ const Projects: React.FC = () => {
         <div className="mt-24 text-center bg-gray-50 py-16 px-6 rounded-3xl border-2 border-solid border-gray-200 max-w-[23rem] mx-auto">
           <h2 className="text-3xl font-bold oswald mb-4 text-gray-900">READY TO BUILD SOMETHING LEGENDARY?</h2>
           <p className="text-gray-600 mb-8 max-w-lg mx-auto">Get an instant labor and material estimate for your project in seconds with our premium QuoteMatrix calculator.</p>
-          <Link to="/booking" className="inline-block bg-[#CB4154] hover:bg-[#b03848] text-white px-10 py-4 rounded-sm font-bold oswald tracking-wider transition-all">
+          <Link to="/booking" className="inline-block bg-accent hover:bg-accent-dark text-accent-ink px-10 py-4 rounded-sm font-bold oswald tracking-wider transition-all">
             GET A QUOTE NOW
           </Link>
         </div>

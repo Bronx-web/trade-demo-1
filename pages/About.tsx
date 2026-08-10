@@ -38,7 +38,7 @@ const About: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div className="space-y-8">
-            <div className="bg-soft-red p-8 border-l-4 border-brick-orange rounded-r-lg">
+            <div className="bg-accent-soft p-8 border-l-4 border-brick-orange rounded-r-lg">
               <h3 className="text-xl font-bold oswald mb-4 uppercase">Industry Compliance</h3>
               <p className="text-gray-800 font-semibold mb-2">Certified to AS/NZS 3000 — The NZ Wiring Rules</p>
               <p className="text-gray-600 text-sm">
@@ -59,7 +59,7 @@ const About: React.FC = () => {
                   "Certificate of Compliance issued on completion"
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <span className="text-[#CB4154] font-bold">✓</span>
+                    <span className="text-accent font-bold">✓</span>
                     <span className="text-gray-700">{item}</span>
                   </li>
                 ))}

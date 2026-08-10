@@ -22,7 +22,7 @@ const FaqAccordion: React.FC = () => {
             >
               <span className="oswald font-bold text-lg md:text-xl text-gray-900 uppercase">{faq.question}</span>
               <span
-                className={`shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full border border-gray-300 text-gray-500 transition-transform duration-300 ${isOpen ? 'rotate-45 border-[#CB4154] text-[#CB4154]' : ''}`}
+                className={`shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full border border-gray-300 text-gray-500 transition-transform duration-300 ${isOpen ? 'rotate-45 border-accent text-accent' : ''}`}
               >
                 +
               </span>
