@@ -12,7 +12,7 @@ const About: React.FC = () => {
         <img 
           src={getAssetUrl(MASONRY_ASSETS.hero.about)} 
           className="absolute inset-0 w-full h-full object-cover opacity-40" 
-          alt="Masonry tools" 
+          alt="Electrical tools"
         />
         <h1 className="relative text-3xl md:text-5xl font-bold oswald text-white uppercase tracking-widest text-center px-4">
           {SITE.seoHeading}
@@ -24,15 +24,15 @@ const About: React.FC = () => {
 
       {/* Intro: experience */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-16 pb-8 text-center">
-        <h2 className="text-3xl font-bold oswald mb-4">With a Wealth of Experience...</h2>
+        <h2 className="text-3xl font-bold oswald mb-4">Committed To Getting It Right</h2>
         <p className="text-gray-600 leading-relaxed text-lg">
-          Operating with successful business partners for 25 years, I bring proven crafting strategies for longevity.
-          With a love for the arts, I have the eye for detail. A proficiency in new builds with heavy deadlines
-          to small builds with high detail. I have the perfect balance of design & ingenuity.
+          {SITE.name} is fully committed to ensuring client satisfaction. Our team members and contractors are both
+          punctual and highly knowledgeable, and we operate with integrity on every job — from a single powerpoint
+          through to a full commercial fitout. Locally owned and operated in Hamilton since 2021.
         </p>
       </div>
 
-      {/* LBP Trust Strip */}
+      {/* Accreditation trust strip */}
       <LbpStrip />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-20">
@@ -40,10 +40,11 @@ const About: React.FC = () => {
           <div className="space-y-8">
             <div className="bg-soft-red p-8 border-l-4 border-brick-orange rounded-r-lg">
               <h3 className="text-xl font-bold oswald mb-4 uppercase">Industry Compliance</h3>
-              <p className="text-gray-800 font-semibold mb-2">Built to NZS 3604 - The NZ Timber-Framed Buildings Standard</p>
+              <p className="text-gray-800 font-semibold mb-2">Certified to AS/NZS 3000 — The NZ Wiring Rules</p>
               <p className="text-gray-600 text-sm">
-                NZS 3604 is the core building standard for residential houses in New Zealand. It sets the minimum requirements 
-                for foundations, bracing, timber framing, and how brick veneer must be tied back to the structural frame.
+                AS/NZS 3000 is the electrical installation standard every registered electrician in New Zealand works to.
+                It covers how circuits are designed, protected, earthed and tested, and it is what a Certificate of
+                Compliance is issued against when the job is signed off.
               </p>
             </div>
 
@@ -51,11 +52,11 @@ const About: React.FC = () => {
               <h3 className="text-2xl font-bold oswald">WHY IT MATTERS:</h3>
               <ul className="space-y-3">
                 {[
-                  "Correct cavity size and flashings for moisture management",
-                  "Stainless-steel veneer ties at correct spacing and depth",
-                  "Proper control joints and movement gaps to prevent cracking",
-                  "Foundations designed for wind and earthquake zones",
-                  "All detailing signed off as code-compliant"
+                  "Circuits correctly rated and protected for the load",
+                  "RCD protection where the Wiring Rules require it",
+                  "Earthing and bonding tested, not assumed",
+                  "Switchboards labelled so the next person can work safely",
+                  "Certificate of Compliance issued on completion"
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <span className="text-[#CB4154] font-bold">✓</span>
@@ -70,10 +71,10 @@ const About: React.FC = () => {
             <img
               src={getAssetUrl(MASONRY_ASSETS.misc.worker)}
               className="w-full rounded-lg shadow-2xl"
-              alt="Professional bricklayer working"
+              alt="Registered electrician at work"
             />
             <div className="p-6 bg-gray-50 border border-gray-100 rounded-lg text-center italic text-gray-500">
-              "Your brickwork won't just look perfect on day one. It's built to be fully compliant for many years to come."
+              "Local spark, professional finish. Done right, efficiently, safely and to the highest standards."
             </div>
           </div>
         </div>

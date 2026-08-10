@@ -1,79 +1,82 @@
 
 /**
- * MASONRY_ASSETS
- * 
- * Central management for all visuals. 
- * 
- * 🛠 THE DEFINITIVE IMAGE FIX:
- * 1. Your 'images' folder MUST be at the SAME LEVEL as 'index.html'.
- * 2. This code uses RELATIVE paths (NO leading slash) for *local* files.
- * 3. File names are CASE SENSITIVE. 'my-work-2.jpg' is not 'My-Work-2.jpg'.
- * 4. If you want to use a local image, ensure its `path` property starts with 'images/'.
- *    If it starts with 'http', it will load from the web.
+ * MASONRY_ASSETS — site imagery (name kept from the template; it is the generic
+ * asset map, not masonry-specific).
+ *
+ * ⚠️ ALL PROJECT PHOTOS BELOW ARE STOCK PLACEHOLDERS.
+ * Electrical Potential publishes no work photos — their Gallery page 404s — so
+ * nothing here shows their actual jobs. Swap every `path` for real photos before
+ * this is presented as their site.
+ *
+ * Client files go in `public/images/` (NOT root `images/`): Vite only publishes
+ * `public/`, so root-images render in `npm run dev` and 404 on the live deploy.
+ * Local paths are written with a leading slash; `getAssetUrl` normalises either way.
+ * File names are CASE SENSITIVE. A `path` starting with 'http' loads from the web.
  */
 
-const FALLBACK_HERO = 'https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&q=80&w=2000';
-const FALLBACK_PROJECT = 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=800';
+const FALLBACK_HERO = 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&q=80&w=2000';
+const FALLBACK_ABOUT = 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=1600';
+const FALLBACK_PROJECT = 'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&q=80&w=800';
 
 export const MASONRY_ASSETS = {
   branding: {
-    logo: '/images/logo.png', 
+    logo: '/images/ep-logo.png',
   },
   hero: {
-    main: '/images/hero-home.jpg', // Local asset
-    about: 'https://images.pexels.com/photos/11236546/pexels-photo-11236546.jpeg', // Currently external
+    main: FALLBACK_HERO,
+    about: FALLBACK_ABOUT,
   },
   services: {
-    retaining: '/images/retaining-wall.png', // Local asset
-    veneer: 'https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&q=80&w=800',
-    paving: 'https://images.unsplash.com/photo-1621905231727-44023c382617?auto=format&fit=crop&q=80&w=800',
+    residential: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=800',
+    commercial: 'https://images.unsplash.com/photo-1565608087341-404b25492fee?auto=format&fit=crop&q=80&w=800',
+    networking: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800',
   },
   projects: [
-    { 
-      id: 1, 
-      title: 'Modern Gray Veneer', 
-      category: 'Residential', 
-      path: '/images/my-work-2.jpg', // Local asset
-      fallback: 'https://www.bronxweb.nz/mock-ups-2/my-work-1.png' 
+    {
+      id: 1,
+      title: 'Switchboard Upgrade',
+      category: 'Residential',
+      path: 'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&q=80&w=800',
+      fallback: FALLBACK_PROJECT
     },
-    { 
-      id: 2, 
-      title: 'Heritage Restoration', 
-      category: 'Commercial', 
-      path: '/images/my-work-1.jpg', // Local asset
-      fallback: 'https://www.bronxweb.nz/mock-ups-2/pro-temp-img-1.png' 
+    {
+      id: 2,
+      title: 'New Build Wiring',
+      category: 'Residential',
+      path: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800',
+      fallback: FALLBACK_PROJECT
     },
-    { 
-      id: 3, 
-      title: 'Outdoor Living Area', 
-      category: 'Landscape', 
-      path: '/images/hero-home.jpg', // Local asset
-      fallback: 'https://www.bronxweb.nz/mock-ups-2/pro-temp-img-2.png' 
+    {
+      id: 3,
+      title: 'Commercial Fitout',
+      category: 'Commercial',
+      path: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800',
+      fallback: FALLBACK_PROJECT
     },
-    { 
-      id: 4, 
-      title: 'Precision Blockwork', 
-      category: 'Structural', 
-      path: 'https://storage.googleapis.com/msgsndr/2vk1dsBdhIOl6FH3lwEn/media/68951fc4cf860d04dc203631.jpeg', // Currently external
-      fallback: 'https://www.bronxweb.nz/mock-ups-2/image4.jpeg' 
+    {
+      id: 4,
+      title: 'Data & Fibre Cabling',
+      category: 'Networking',
+      path: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800',
+      fallback: FALLBACK_PROJECT
     },
-    { 
-      id: 5, 
-      title: 'Feature Brick Wall', 
-      category: 'Interior', 
-      path: '/images/my-work-3.jpg', // Local asset
-      fallback: 'https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&q=80&w=800' 
+    {
+      id: 5,
+      title: 'LED Lighting Install',
+      category: 'Residential',
+      path: 'https://images.unsplash.com/photo-1524634126442-357e0eac3c14?auto=format&fit=crop&q=80&w=800',
+      fallback: FALLBACK_PROJECT
     },
-    { 
-      id: 6, 
-      title: 'Retaining Solution', 
-      category: 'Infrastructure', 
-      path: '/images/retaining-wall.png', // Local asset
-      fallback: '/images/retaining-wall.png'
+    {
+      id: 6,
+      title: 'Solar — On/Off Grid',
+      category: 'Renewable',
+      path: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&q=80&w=800',
+      fallback: FALLBACK_PROJECT
     },
   ],
   misc: {
-    worker: '/images/hart-pic.jpg', // Local asset
+    worker: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&q=80&w=1200',
     placeholder: FALLBACK_PROJECT
   }
 };

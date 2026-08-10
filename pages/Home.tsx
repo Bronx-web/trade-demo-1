@@ -15,7 +15,7 @@ const Home: React.FC = () => {
         <div className="absolute inset-0 z-0">
           <img 
             src={getAssetUrl(MASONRY_ASSETS.hero.main)} 
-            alt="Brick wall craftsmanship" 
+            alt="Electrical work in progress"
             className="w-full h-full object-cover brightness-[0.50]"
             onError={(e) => {
               // Safety fallback if local image fails
@@ -29,11 +29,11 @@ const Home: React.FC = () => {
             <span className="bg-[#CB4154] inline-block px-3 py-1 mt-2">{SITE.heroLine2}</span>
           </h1>
           <p className="mt-4 text-lg md:text-2xl font-light max-w-2xl text-gray-200">
-            Precision Work for Residential & Commercial Brick & Block Work in {SITE.regionLabel}.
+            Residential, commercial and industrial electrical across {SITE.regionLabel}.
           </p>
           <div className="mt-[12.5rem] flex flex-col sm:flex-row gap-4">
             <Link to="/booking" className="inline-block bg-[#CB4154] hover:bg-[#b03848] text-white px-8 py-4 text-center rounded-sm font-bold oswald tracking-wider transition-all transform hover:scale-[1.02] active:scale-95">
-              GET AN INSTANT QUOTE
+              REQUEST A JOB
             </Link>
             <Link to="/projects" className="inline-block bg-white hover:bg-gray-100 text-gray-900 px-8 py-4 text-center rounded-sm font-bold oswald tracking-wider transition-all transform hover:scale-[1.02] active:scale-95">
               VIEW RECENT WORK
@@ -48,17 +48,17 @@ const Home: React.FC = () => {
       {/* Intro Section */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold oswald mb-6 text-gray-900 uppercase">Experienced Brick Block Craftsman</h2>
+          <h2 className="text-3xl md:text-4xl font-bold oswald mb-6 text-gray-900 uppercase">Locally Owned &amp; Operated</h2>
           <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-10">
-            With a team of time-served craftsman with a serious obsession for clean lines, perfect bonds. You can trust {SITE.name} to deliver a professional finish every time.
-            Whether you need a bulletproof structural build, a show-stopping outdoor fireplace, or a heritage repoint. I've got the hands and the experience to make it happen.
-            No shortcuts. No mess left behind. Just proper brick and block work that stands the test of time.
+            {SITE.name} is proud to be your locally owned and operated electrical company, serving Hamilton and the wider Waikato since 2021.
+            Whether it is a new powerpoint, a switchboard upgrade, a full new-build fitout, or data and fibre through the whole office,
+            our team is punctual, registered and knowledgeable. We get the job done right, efficiently, safely and to the highest standards.
           </p>
 
         </div>
       </section>
 
-      {/* LBP Trust Strip */}
+      {/* Accreditation trust strip */}
       <LbpStrip />
 
       {/* How We Work */}
@@ -72,18 +72,18 @@ const Home: React.FC = () => {
             {[
               {
                 step: '01',
-                title: 'Online Quote',
-                description: 'Use our interactive tool to get an immediate ballpark estimate for your project.',
+                title: 'Tell Us The Job',
+                description: 'Send through what you need online, or call us direct if the power is out and it cannot wait.',
               },
               {
                 step: '02',
-                title: 'Site Visit',
-                description: 'We visit your site to confirm access, ground conditions, and architectural details.',
+                title: 'Clear Price',
+                description: 'We confirm the details, book a time that suits, and give you a clear price before any work starts.',
               },
               {
                 step: '03',
-                title: 'Master Build',
-                description: 'Execution of the masonry work to NZS 3604 standards with a clean, professional finish.',
+                title: 'Done Properly',
+                description: 'Certified to AS/NZS 3000, tidied up after, and signed off on completion.',
               },
             ].map((item) => (
               <div key={item.step} className="text-center md:text-left">

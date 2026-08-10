@@ -10,7 +10,7 @@ const Projects: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold oswald text-white mb-4">WHEN QUALITY MEETS EFFICIENCY</h1>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Clean lines. Perfect joints. Zero shortcuts. From full-house brick veneer to statement outdoor fireplaces.
+            Tidy work, done safely and signed off. From switchboard upgrades and new-build wiring to commercial fitouts and data cabling.
           </p>
         </div>
       </div>

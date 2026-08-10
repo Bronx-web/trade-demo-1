@@ -52,7 +52,7 @@ const Footer = forwardRef<HTMLElement>((props, ref) => {
           </div>
         </div>
         <div className="border-t border-gray-800 pt-8 text-center text-sm text-gray-500">
-          <p>© {new Date().getFullYear()} {SITE.name}. All Rights Reserved | Built to NZS 3604 Standards</p>
+          <p>© {new Date().getFullYear()} {SITE.name}. All Rights Reserved | Certified to AS/NZS 3000</p>
         </div>
       </div>
     </footer>
