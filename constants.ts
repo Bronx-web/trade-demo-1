@@ -1,6 +1,4 @@
 
-import { QuoteRates } from './types';
-
 /**
  * PER-CLIENT CONFIG
  *
@@ -41,29 +39,14 @@ export const SITE = {
 export const LEAD_ENDPOINT = '';
 
 /**
- * ⚠️ PLACEHOLDER RATES — NOT SUPPLIED BY THE CLIENT.
+ * NOTE: no rate table here on purpose.
  *
- * Electrical Potential publishes no pricing on their site or Google listing.
- * These are indicative hourly labour rates with a materials allowance, used only
- * so the estimator renders. Confirm real rates with Lachlan before this goes to
- * the client, or replace the estimator with the triage form (planned) so the site
- * never quotes a number it cannot stand behind.
+ * The masonry template quoted from area × rate. Electrical work cannot be priced
+ * that way without seeing the job, so the booking page runs a triage form
+ * (components/TriageForm.tsx) that qualifies the job instead of pricing it. If a
+ * future client genuinely does quote by the square metre, restore a QuoteRates
+ * table here and wire it back into the booking page.
  */
-export const SERVICE_RATES: QuoteRates = {
-  labour: {
-    residential: 95,
-    commercial: 110,
-    networking: 105,
-    solar: 120
-  },
-  materials: {
-    residential: 60,
-    commercial: 75,
-    networking: 70,
-    solar: 90
-  },
-  taxRate: 0.15
-};
 
 export const CONTACT_INFO = {
   // TODO: email not published on their site or Google listing — confirm with Lachlan.

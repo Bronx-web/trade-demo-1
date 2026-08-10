@@ -35,10 +35,10 @@ const Projects: React.FC = () => {
         </div>
 
         <div className="mt-24 text-center bg-gray-50 py-16 px-6 rounded-3xl border-2 border-solid border-gray-200 max-w-[23rem] mx-auto">
-          <h2 className="text-3xl font-bold oswald mb-4 text-gray-900">READY TO BUILD SOMETHING LEGENDARY?</h2>
-          <p className="text-gray-600 mb-8 max-w-lg mx-auto">Get an instant labor and material estimate for your project in seconds with our premium QuoteMatrix calculator.</p>
+          <h2 className="text-3xl font-bold oswald mb-4 text-gray-900">GOT A JOB FOR US?</h2>
+          <p className="text-gray-600 mb-8 max-w-lg mx-auto">Answer a few quick questions and we will call you back to confirm a time and a clear price.</p>
           <Link to="/booking" className="inline-block bg-accent hover:bg-accent-dark text-accent-ink px-10 py-4 rounded-sm font-bold oswald tracking-wider transition-all">
-            GET A QUOTE NOW
+            REQUEST A JOB
           </Link>
         </div>
       </div>
