@@ -4,12 +4,13 @@
  * 
  * Central management for all visuals. 
  * 
- * 🛠 THE DEFINITIVE IMAGE FIX:
- * 1. Your 'images' folder MUST be at the SAME LEVEL as 'index.html'.
- * 2. This code uses RELATIVE paths (NO leading slash) for *local* files.
- * 3. File names are CASE SENSITIVE. 'my-work-2.jpg' is not 'My-Work-2.jpg'.
- * 4. If you want to use a local image, ensure its `path` property starts with 'images/'.
- *    If it starts with 'http', it will load from the web.
+ * Local files live in public/images/<client>/ and are written here WITHOUT a
+ * leading slash — getAssetUrl() adds it so the path resolves from the site root.
+ * File names are CASE SENSITIVE.
+ *
+ * A `path` starting with 'http' loads from the web instead. Prefer local files:
+ * external URLs we don't control can disappear without warning. The `fallback`
+ * URLs below are Unsplash placeholders, only used if the local file fails.
  */
 
 const FALLBACK_HERO = 'https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&q=80&w=2000';
@@ -59,19 +60,19 @@ export const MASONRY_ASSETS = {
       path: 'images/topnotch/work-5.jpg',
       fallback: 'https://www.bronxweb.nz/mock-ups-2/image4.jpeg'
     },
-    { 
-      id: 5, 
-      title: 'Feature Brick Wall', 
-      category: 'Interior', 
-      path: 'https://raw.githubusercontent.com/Bronx-web/trade-demo-1/refs/heads/main/images/my-work-3.jpg', // Local asset
-      fallback: 'https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&q=80&w=800' 
+    {
+      id: 5,
+      title: 'Feature Brick Wall',
+      category: 'Interior',
+      path: 'images/topnotch/work-1.jpg',
+      fallback: 'https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&q=80&w=800'
     },
-    { 
-      id: 6, 
-      title: 'Retaining Solution', 
-      category: 'Infrastructure', 
-      path: 'https://www.bowersbrothers.co.nz/wp-content/uploads/2025/04/Brentwood-Estate-Taupo.jpg', // Currently external
-      fallback: 'https://images.unsplash.com/photo-1634733988138-bf2c3a2a13fa?auto=format&fit=crop&q=80&w=800' 
+    {
+      id: 6,
+      title: 'Retaining Solution',
+      category: 'Infrastructure',
+      path: 'images/topnotch/about.png',
+      fallback: 'https://images.unsplash.com/photo-1634733988138-bf2c3a2a13fa?auto=format&fit=crop&q=80&w=800'
     },
   ],
   misc: {
