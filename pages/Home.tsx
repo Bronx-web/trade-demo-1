@@ -18,8 +18,8 @@ const Home: React.FC = () => {
             alt="Electrical work in progress"
             className="w-full h-full object-cover brightness-[0.50]"
             onError={(e) => {
-              // Safety fallback if local image fails
-              (e.target as HTMLImageElement).src = 'https://images.pexels.com/photos/11236546/pexels-photo-11236546.jpeg';
+              // Safety fallback if the local hero image fails
+              (e.target as HTMLImageElement).src = MASONRY_ASSETS.misc.placeholder;
             }}
           />
         </div>

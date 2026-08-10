@@ -69,9 +69,9 @@ const About: React.FC = () => {
 
           <div className="space-y-6">
             <img
-              src={getAssetUrl(MASONRY_ASSETS.misc.worker)}
+              src={getAssetUrl(MASONRY_ASSETS.misc.team)}
               className="w-full rounded-lg shadow-2xl"
-              alt="Registered electrician at work"
+              alt="The Electrical Potential team in front of the company van"
             />
             <div className="p-6 bg-gray-50 border border-gray-100 rounded-lg text-center italic text-gray-500">
               "Local spark, professional finish. Done right, efficiently, safely and to the highest standards."
